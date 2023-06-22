@@ -1,0 +1,18 @@
+﻿.containor {
+    width: 50%;
+    height: 50px;
+    padding: 12px;
+    resize: vertical;
+}
+
+#custom-textbox{
+    height:60px;
+    width: 300px;
+}
+
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 50%;
+        margin-top: 0;
+    }
+}
