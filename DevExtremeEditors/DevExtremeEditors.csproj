@@ -110,6 +110,7 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="css\style.css" />
     <Content Include="images\eye.png" />
+    <Content Include="Js\Button.js" />
     <Content Include="Js\CheckBox.js" />
     <Content Include="Js\DateBox.js" />
     <Content Include="Js\textbox.js" />
@@ -174,6 +175,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="View\Button.html" />
     <Content Include="View\CheckBox.html" />
     <Content Include="View\DateBox.html" />
     <Content Include="View\textbox.html" />

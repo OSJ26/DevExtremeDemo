@@ -34,6 +34,30 @@
         showClearButton: true
     }).dxTextBox("instance");
 
+    $('#dxCnfPassword').dxTextBox({
+        accessKey: 'p',
+        buttons: [{
+            name: "show",
+            loaction: "after",
+            options: {
+                icon: '../img/eye.png',
+                onClick() {
+                    password.option('mode', password.option('mode') === 'text' ? 'password' : 'text');
+                }
+            },
+        }],
+        label: "Confirm Password",
+        labelMode: "floating",
+        mode: "password",
+        maxLength: 16,
+        inputAttr: {
+            id: "dxTxtPass"
+        },
+        showClearButton: true
+    }).dxTextBox("instance");
+
+    
+
     const number = $('#dxNumber').dxTextBox({
         label: "Phone",
         isValid: true,
