@@ -56,7 +56,12 @@
             }
         }
 
-    }).dxTextBox("instance");
+    }).dxValidator({
+        validationRules: [{
+            type: "required",
+            message: "Password Requiered"
+        }]
+    });
 
     /////Confirm Password start
     $('#dxCnfPassword').dxTextBox();
@@ -74,7 +79,7 @@
                 }
             },
         }],
-        label: "Password",
+        label: "Confirm Password",
         labelMode: "floating",
         mode: "password",
         maxLength: 16,
@@ -82,7 +87,7 @@
             id: "dxcnfTxtPass"
         },
         showClearButton: true,
-
+        validationMessagePosition: "bottom",
         onInput: function () {
             $("#dxCnfPassword").dxTextBox("instance").option("validationStatus", "pending");
         },
@@ -96,7 +101,12 @@
                 cnfPassword.option("validationStatus", "valid");
             }
         }
-    }).dxTextBox("instance");
+    }).dxValidator({
+        validationRules: [{
+            type: "required",
+            message: "Password Not Matched"
+        }]
+    });
     /////Confirm Password end
 
 
@@ -172,7 +182,8 @@
     $("#dxSubmitButton").dxButton({
         accessKey: "b",
         text: "Register",
-        type: "default"
+        type: "default",
+        useSubmitBehavior: true
     }).dxButton("instance");
 
     $("#dxResetButton").dxButton({
