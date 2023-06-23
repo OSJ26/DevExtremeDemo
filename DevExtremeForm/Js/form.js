@@ -106,10 +106,18 @@
     $("#dxSubmitButton").dxButton({
         accessKey: "b",
         text: "Register",
+        type: "default"
     }).dxButton("instance");
 
-    $("#dxRestButton").dxButton({
-        accessKey: "b",
+    $("#dxResetButton").dxButton({
+        accessKey: "r",
         text: "Reset",
+        type: "success"
+    }).dxButton("instance");
+
+    $("#dxCancelButton").dxButton({
+        accessKey: "C",
+        text: "Cancel",
+        type: "danger"
     }).dxButton("instance");
 })
