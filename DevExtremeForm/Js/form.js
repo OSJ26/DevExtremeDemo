@@ -9,10 +9,12 @@
         stylingMode: "outlined",
         hint: "UserName",
         maxLength: 30,
-        mode: "text"
+        mode: "text",
     }).dxTextBox("instance");
 
-    const password = $('#dxPassword').dxTextBox({
+    $('#dxPassword').dxTextBox();
+    const password = $('#dxPassword').dxTextBox("instance");
+    $('#dxPassword').dxTextBox({
         accessKey: 'p',
         buttons: [{
             name: "show",
@@ -31,8 +33,34 @@
         inputAttr: {
             id: "dxTxtPass"
         },
-        showClearButton: true
+        showClearButton: true,
+
+        onInput: function () {
+            $("#dxPassword").dxTextBox("instance").option("validationStatus", "pending");
+        },
+
+        onValueChanged: (e) => {
+            var newVal = password.option("value");
+            password.option("validationStatus", "valid");
+            if (newVal == cnfPassword.option("value")) {
+                cnfPassword.option("validationStatus", "valid");
+            } else {
+                cnfPassword.option("validationStatus", "invalid");
+            }
+        },
+
+        onFocusOut: (e) => {
+            var value = password.option("value");
+            if (value == "") {
+                password.option("validationStatus", "invalid");
+            }
+        }
+
     }).dxTextBox("instance");
+
+    /////Confirm Password start
+    $('#dxCnfPassword').dxTextBox();
+    const cnfPassword = $('#dxCnfPassword').dxTextBox("instance");
 
     $('#dxCnfPassword').dxTextBox({
         accessKey: 'p',
@@ -42,21 +70,35 @@
             options: {
                 icon: '../img/eye.png',
                 onClick() {
-                    password.option('mode', password.option('mode') === 'text' ? 'password' : 'text');
+                    cnfPassword.option('mode', cnfPassword.option('mode') === 'text' ? 'password' : 'text');
                 }
             },
         }],
-        label: "Confirm Password",
+        label: "Password",
         labelMode: "floating",
         mode: "password",
         maxLength: 16,
         inputAttr: {
-            id: "dxTxtPass"
+            id: "dxcnfTxtPass"
         },
-        showClearButton: true
-    }).dxTextBox("instance");
+        showClearButton: true,
 
-    
+        onInput: function () {
+            $("#dxCnfPassword").dxTextBox("instance").option("validationStatus", "pending");
+        },
+
+        onFocusOut: (e) => {
+            var value = cnfPassword.option("value");
+            console.log(value);
+            if (value == "") {
+                cnfPassword.option("validationStatus", "invalid");
+            } else if (password.option("value") == value) {
+                cnfPassword.option("validationStatus", "valid");
+            }
+        }
+    }).dxTextBox("instance");
+    /////Confirm Password end
+
 
     const number = $('#dxNumber').dxTextBox({
         label: "Phone",

@@ -77,7 +77,9 @@
     //Returns element 
     console.log(name.element());
 
-    const password = $('#password').dxTextBox({
+    $('#password').dxTextBox();
+    const password = $('#password').dxTextBox("instance");
+    $('#password').dxTextBox({
         accessKey: "p",
         buttons: [{
             name: 'custom',
@@ -89,6 +91,23 @@
                 }
             },
         }],
+
+        onInput: () => {
+            password.option("validationStatus", "pending");
+        },
+
+        onChange: () => {
+            password.option("validationStatus", "valid");
+        },
+
+        onFocusOut: () => {
+            var value = password.option("value");
+            console.log(value);
+            if (value == "") {
+                password.option("validationStatus", "invalid");
+            } 
+        },
+
         label: "Password",
         disable: false,
         labelMode: "floating",
@@ -137,4 +156,8 @@
         name: "email",
     }).dxTextBox("instance");
 
+
+    function setInvalidStatus() {
+        password.option("validationStatus", "valid");
+    }
 })
