@@ -1,7 +1,4 @@
 ﻿$(() => {
-
-
-
     const myCheck = $("#simpleCheck").dxCheckBox({
         accessKey: "c",
         text: "Simple Check",

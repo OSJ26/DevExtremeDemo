@@ -1,0 +1,41 @@
+﻿body {
+}
+
+.containor {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius:20px;
+}
+
+.letsGoForDate {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.space{
+    margin-top : 20px;
+    margin-bottom :20px;
+    display: block;
+}
+
+.heading{
+    margin: auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.button {
+    background-color: #04AA6D !important;
+    padding: 5px 0px;
+    margin: 4px 0;
+    border: none;
+    display: inline-grid;
+    cursor: pointer;
+    width: 50%;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

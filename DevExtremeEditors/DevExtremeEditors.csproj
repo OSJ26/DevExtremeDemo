@@ -111,6 +111,7 @@
     <Content Include="css\style.css" />
     <Content Include="images\eye.png" />
     <Content Include="Js\CheckBox.js" />
+    <Content Include="Js\DateBox.js" />
     <Content Include="Js\textbox.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
@@ -174,6 +175,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
     <Content Include="View\CheckBox.html" />
+    <Content Include="View\DateBox.html" />
     <Content Include="View\textbox.html" />
     <Content Include="Web.config" />
   </ItemGroup>
