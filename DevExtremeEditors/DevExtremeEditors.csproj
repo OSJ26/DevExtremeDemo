@@ -113,6 +113,9 @@
     <Content Include="Js\Button.js" />
     <Content Include="Js\CheckBox.js" />
     <Content Include="Js\DateBox.js" />
+    <Content Include="Js\DropDown.js" />
+    <Content Include="Js\NumberBox.js" />
+    <Content Include="Js\SelectBox.js" />
     <Content Include="Js\TextArea.js" />
     <Content Include="Js\textbox.js" />
     <Content Include="Scripts\cldr.js" />
@@ -179,6 +182,9 @@
     <Content Include="View\Button.html" />
     <Content Include="View\CheckBox.html" />
     <Content Include="View\DateBox.html" />
+    <Content Include="View\DropDown.html" />
+    <Content Include="View\NumberBox.html" />
+    <Content Include="View\SelectBox.html" />
     <Content Include="View\TextArea.html" />
     <Content Include="View\textbox.html" />
     <Content Include="Web.config" />
