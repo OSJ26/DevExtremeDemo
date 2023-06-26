@@ -63,6 +63,12 @@
         }
 
     }).dxTextBox("instance");
+
+    ///On method priority is higher
+    name.on("input", () => {
+        console.log("This is test");
+    });
+
     var counter = 0;
     setTimeout(() => {
         name.beginUpdate();

@@ -109,6 +109,39 @@
     });
     /////Confirm Password end
 
+    $('#dxMyAddress').dxTextArea();
+    const myAddress = $('#dxMyAddress').dxTextArea("instance")
+    $("#dxMyAddress").dxTextArea({
+        accessKey: "A",
+        activeStateEnabled: true,
+        label: "Address",
+        labelMode: "floating",
+        minHeight: "30px",
+        maxHeight: "40px",
+        maxLength: 50,
+        name: "Address",
+        stylingMode: "outlined",
+        autoResizedEnabled: true,
+        inputAttr: {
+            id: "myAddress"
+        },
+
+        onFocusOut: () => {
+            let address = myAddress.option("value");
+            console.log(address);
+
+            if (address == "") {
+                myAddress.option("validationStatus", "invalid");
+            }
+        }
+
+    }).dxValidator({
+        validationRules: [{
+            type: "required",
+            message: "Address Is Requiered"
+        }]
+    });
+
 
     const number = $('#dxNumber').dxTextBox({
         label: "Phone",

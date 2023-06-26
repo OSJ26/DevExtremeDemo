@@ -7,11 +7,9 @@
     $("#buttonContainer").dxButton();
 
 
-    $("#buttonContainer").dxButton().focus(() => {
-        console.log("button get the focus second time");
-    })
 
-    ///This we get the DevExtreme button from our html file
+
+    ///This will get the DevExtreme button from our html file
     var button = $("#buttonContainer").dxButton("instance");
 
     //This way we can set the multiple property for our widget.
@@ -22,6 +20,9 @@
         }
     });
 
+    $("#buttonContainer").dxButton().focus(() => {
+        console.log("button get the focus second time");
+    })
 
     //Here we subscribe the event for our button
     //where we use the on method which contains two argument
@@ -35,6 +36,7 @@
     }).on("blur", () => {
         console.log("button losses the focus");
     })
+
 
 
     ///this way we can unsubscibe the event from our ui component
@@ -61,10 +63,5 @@
     //where as dispose method is not remove component from dom
     //$("#buttonContainer").dxButton().remove();
     //$("#buttonContainer").dxButton("dispose");
-
-
-    //var button1 = new DevExpress.ui.dxButton(document.getElementById("buttonContainer"), {
-    //    text: "ClickMe"
-    //});
 
 });
