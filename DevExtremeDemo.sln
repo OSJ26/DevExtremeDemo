@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtremeEditors", "DevExt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtremeForm", "DevExtremeForm\DevExtremeForm.csproj", "{59349922-A757-4604-A85E-968333AABF0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtremeDataGrid", "DevExtremeDataGrid\DevExtremeDataGrid.csproj", "{73A9C066-FE2D-476A-B9CE-E8430487E55C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{59349922-A757-4604-A85E-968333AABF0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59349922-A757-4604-A85E-968333AABF0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59349922-A757-4604-A85E-968333AABF0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73A9C066-FE2D-476A-B9CE-E8430487E55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73A9C066-FE2D-476A-B9CE-E8430487E55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73A9C066-FE2D-476A-B9CE-E8430487E55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73A9C066-FE2D-476A-B9CE-E8430487E55C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
