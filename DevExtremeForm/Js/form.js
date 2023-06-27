@@ -11,9 +11,20 @@
         return d.promise();
     }
 
+    $('#form').on('submit', (e) => {
+        e.preventDefault();
+        DevExpress.ui.notify({
+            message: 'You have submitted the form',
+            position: {
+                my: 'center top',
+                at: 'center top',
+            },
+        }, 'success', 3000);
+
+    });
+
     $("#dxName").dxTextBox();
-    const name = $("#dxName").dxTextBox("insatnce");
-        $('#dxName').dxTextBox({
+    const name = $('#dxName').dxTextBox({
             accessKey: "n",
             activeStateEnabled: true,
             focusStateEnabled: true,
@@ -26,7 +37,7 @@
             mode: "text",
             width: "500px",
 
-        });
+    }).dxTextBox("instance");
 
     $('#dxPassword').dxTextBox();
     const password = $('#dxPassword').dxTextBox("instance");
@@ -290,6 +301,7 @@
         name: "MyDate",
         showClearButton: true
     }).dxDateBox("instance");
+
 
     $("#dxSubmitButton").dxButton({
         accessKey: "b",
