@@ -1,16 +1,32 @@
 ﻿$(() => {
-    const name = $('#dxName').dxTextBox({
-        accessKey: "n",
-        activeStateEnabled: true,
-        focusStateEnabled: false,
-        label: "UserName",
-        labelMode: "floating",
-        inputAttr: { 'aria-label': 'Name' },
-        stylingMode: "outlined",
-        hint: "UserName",
-        maxLength: 30,
-        mode: "text",
-    }).dxTextBox("instance");
+
+    ///Function for the async rule
+    const sendRequest = (value) => {
+        const inValidEmail = 'test@dx-gmail.com';
+        const d = $.Deferred();
+        setTimeout(() => {
+            d.resolve(value !== inValidEmail);
+        }, 1000);
+
+        return d.promise();
+    }
+
+    $("#dxName").dxTextBox();
+    const name = $("#dxName").dxTextBox("insatnce");
+        $('#dxName').dxTextBox({
+            accessKey: "n",
+            activeStateEnabled: true,
+            focusStateEnabled: true,
+            label: "UserName",
+            labelMode: "floating",
+            inputAttr: { 'aria-label': 'Name' },
+            stylingMode: "outlined",
+            hint: "UserName",
+            maxLength: 30,
+            mode: "text",
+            width: "500px",
+
+        });
 
     $('#dxPassword').dxTextBox();
     const password = $('#dxPassword').dxTextBox("instance");
@@ -54,7 +70,8 @@
             if (value == "") {
                 password.option("validationStatus", "invalid");
             }
-        }
+        },
+        width: "500px"
 
     }).dxValidator({
         validationRules: [{
@@ -91,20 +108,27 @@
         onInput: function () {
             $("#dxCnfPassword").dxTextBox("instance").option("validationStatus", "pending");
         },
-
-        onFocusOut: (e) => {
-            var value = cnfPassword.option("value");
-            console.log(value);
-            if (value == "") {
-                cnfPassword.option("validationStatus", "invalid");
-            } else if (password.option("value") == value) {
-                cnfPassword.option("validationStatus", "valid");
-            }
-        }
+        width: "500px"
+        //onFocusOut: (e) => {
+        //    var value = cnfPassword.option("value");
+        //    console.log(value);
+        //    if (value == "") {
+        //        cnfPassword.option("validationStatus", "invalid");
+        //    } else if (password.option("value") == value) {
+        //        cnfPassword.option("validationStatus", "valid");
+        //    }
+        //}
     }).dxValidator({
         validationRules: [{
-            type: "required",
-            message: "Password Not Matched"
+            type: "compare",
+            comparisonTarget() {
+                if (password) {
+                    cnfPassword.option("validationStatus", "valid");
+                    return password.option("value");
+                }
+                return null;
+            },
+            message: "password and Confirm Password Not Matched"
         }]
     });
     /////Confirm Password end
@@ -133,7 +157,8 @@
             if (address == "") {
                 myAddress.option("validationStatus", "invalid");
             }
-        }
+        },
+        width: "500px"
 
     }).dxValidator({
         validationRules: [{
@@ -142,51 +167,105 @@
         }]
     });
 
+    $("#dxCountry").dxSelectBox();
+    const country = $("#dxCountry").dxSelectBox("instance");
+    $("#dxCountry").dxSelectBox({
+        dataSource: countries,
+        validationMessagePosition: 'bottom',
+        placeholder: "Select Country",
+        searchEnabled: true,
+        showClearButton: true,
+        width: "500px"
+    }).dxValidator({
+        validationRules: [{
+            type: "required",
+            message: "Country can not be empty"
+        }]
+    })
 
-    const number = $('#dxNumber').dxTextBox({
-        label: "Phone",
-        isValid: true,
-        maxLength: 10,
+    $("#dxCity").dxTextBox({
+        label: "City",
         labelMode: "floating",
-    }).dxTextBox("instance");
+        showClearButton: true,
+        name: "city",
+        width: "500px"
+    }).dxValidator({
+        validationRules: [{
+            type: "required",
+            message: "City can not be empty"
+        },
+        {
+            type: "pattern",
+            pattern: '^[^0-9]+$',
+            message: "You can not use digit in city"
+        },
+        {
+            type: "stringLength",
+            min: 3,
+            max: 10,
+            message: "City must contain 3 character"
+        }
+        ]
+    })
 
-    const email = $('#dxEmail').dxTextBox({
+    $("#dxEmail").dxTextBox();
+    const email = $("#dxEmail").dxTextBox("instance");
+    $('#dxEmail').dxTextBox({
         label: "email",
         labelMode: "floating",
         name: "email",
-    }).dxTextBox("instance");
 
-    const panCheck = $("#dxPanCheck").dxCheckBox({
+        onFocusOut: (e) => {
+            let emailId = email.option("value");
+            console.log(emailId);
+
+            if (emailId == "") {
+                email.option("validationStatus", "invalid");
+            }
+        },
+        width: "500px"
+
+    }).dxValidator({
+        validationRules: [{
+            type: "required",
+            message: "Email is Required"
+        },
+        {
+            type: "email",
+            message: "Email is Invalid"
+        },
+
+        {
+            type: "async",
+            message: "Email is already register",
+            validationCallback(param) {
+                return sendRequest(param.value);
+            }
+        }
+        ]
+    });
+
+    const termsCheck = $("#dxTerms").dxCheckBox({
         accessKey: "c",
-        text: "PanCard",
+        text: "I agree to the Terms and Conditions",
         name: "MyCheckBox",
         elementAttr: {
             id: "simpleCheck",
             class: "checkMe"
         },
         height: "60px",
-        width: "100px",
+        width: "100%",
         iconSize: "20px",
-        enableThreeStateBehavior: true,
+        value: false,
         focusStateEnabled: true,
         visible: true
-    }).dxCheckBox("instance");
-
-    const aadharCheck = $("#dxAdharCheck").dxCheckBox({
-        accessKey: "c",
-        text: "AadharCard",
-        name: "MyCheckBox",
-        elementAttr: {
-            id: "simpleCheck",
-            class: "checkMe"
-        },
-        height: "60px",
-        width: "100px",
-        iconSize: "20px",
-        enableThreeStateBehavior: true,
-        focusStateEnabled: true,
-        visible: true
-    }).dxCheckBox("instance");
+    }).dxValidator({
+        validationRules: [{
+            type: 'compare',
+            comparisonTarget() { return true; },
+            message: 'You must agree to the Terms and Conditions',
+        }],
+    });
 
     const myDate = $("#dxBirthDate").dxDateBox({
         acceptCustomValue: true,
@@ -203,7 +282,7 @@
             class: "letsGoForDate"
         },
         height: "50px",
-        width: "300px",
+        width: "500px",
         hint: "BirthDate",
         invalidDateMessage: "You must need to add only date",
         label: "BirthDate",
@@ -215,18 +294,21 @@
     $("#dxSubmitButton").dxButton({
         accessKey: "b",
         text: "Register",
+        width: "200px",
         type: "default",
         useSubmitBehavior: true
     }).dxButton("instance");
 
     $("#dxResetButton").dxButton({
         accessKey: "r",
+        width: "200px",
         text: "Reset",
         type: "success"
     }).dxButton("instance");
 
     $("#dxCancelButton").dxButton({
         accessKey: "C",
+        width: "200px",
         text: "Cancel",
         type: "danger"
     }).dxButton("instance");

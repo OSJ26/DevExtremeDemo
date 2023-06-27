@@ -110,6 +110,7 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Css\style.css" />
     <Content Include="img\eye.png" />
+    <Content Include="Js\data.js" />
     <Content Include="Js\form.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
