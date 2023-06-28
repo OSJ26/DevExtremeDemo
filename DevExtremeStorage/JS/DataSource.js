@@ -1,14 +1,28 @@
-﻿$(() => {
-    const dataSrc = new DevExpress.data.DataSource({
-        store: {
-            data: employeeName,
-            type: 'array',
-            key: 'id'
+﻿$(async function(){ 
+    let data = null;
+    await $.ajax({
+        type: "GET",
+        url: "https://localhost:7256/api/USED01",
+        success: (e) => {
+            console.log(e);
+            data = new DevExpress.data.DataSource({
+                store: {
+                    data: e,
+                    type: 'array',
+                    key: 'd01f01'
+                }
+            })
+            DevExpress.ui.notify("Data Fetched SUccessfully","success",500);
+        },
+        error: (e) => {
+            console.log(e);
+            DevExpress.ui.notify("Something went wrong please cehck code!!!","error",1000);
         }
     })
+    console.log(data);  
 
-    $("#mySelect").dxSelectBox({
-        dataSource: dataSrc,
+    await $("#mySelect").dxSelectBox({
+        dataSource: data,
         acceptCustomValue: true,
         placeholder: "Choose Employee",
         showClearButton: true,
@@ -18,30 +32,28 @@
             id: "selectBox"
         },
         searchEnabled: true,
-        displayExpr: 'name',
-        valueExpr: 'id',
-
-        onCustomItemCreating: (data) => {
-            if (!data.text) {
-                data.customItem = null;
+        displayExpr: 'd01f02',
+        valueExpr: 'd01f01',
+        
+        onCustomItemCreating: (e) => {
+            if (!e.text) {
+                e.customItem = null;
                 return;
             }
 
             const employeeId = employeeName.map((item) => item.ID);
             const incrementedId = Math.max.apply(null, employeeId) + 1;
             const newItem = {
-                name: data.text,
+                name: e.text,
                 id: incrementedId,
             };
 
-            data.customItem = dataSrc.store().insert(newItem)
-                .then(() => dataSrc.load())
+            e.customItem = data.store().insert(newItem)
+                .then(() => data.load())
                 .then(() => newItem)
                 .catch((error) => {
                     throw error;
                 });
-
-            console.log(data);
         },
     });
 })
