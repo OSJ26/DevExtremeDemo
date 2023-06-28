@@ -9,7 +9,7 @@
                 store: {
                     data: e,
                     type: 'array',
-                    key: 'd01f01'
+                    key: 'd01F01'
                 }
             })
             DevExpress.ui.notify("Data Fetched SUccessfully","success",500);
@@ -32,8 +32,8 @@
             id: "selectBox"
         },
         searchEnabled: true,
-        displayExpr: 'd01f02',
-        valueExpr: 'd01f01',
+        displayExpr: 'd01F02',
+        valueExpr: 'd01F01',
         
         onCustomItemCreating: (e) => {
             if (!e.text) {
@@ -44,8 +44,8 @@
             const employeeId = employeeName.map((item) => item.ID);
             const incrementedId = Math.max.apply(null, employeeId) + 1;
             const newItem = {
-                name: e.text,
-                id: incrementedId,
+                d01F02: e.text,
+                d01F01: incrementedId,
             };
 
             e.customItem = data.store().insert(newItem)
