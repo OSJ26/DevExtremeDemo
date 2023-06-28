@@ -11,7 +11,7 @@
         width: "120px",
         iconSize: "30px",
         enableThreeStateBehavior: false,
-        value: "valid",
+        value:false,
         focusStateEnabled: true,
         hint: "You Need To Check This",
         rtlEnabled: true,
@@ -35,7 +35,12 @@
     })
 
     myCheck.registerKeyHandler("enter", (e) => {
-        console.log("The Key Pressed is " + e.code);
+        var isState = myCheck.option("value");
+        if (!isState) {
+            myCheck.option("value", true);
+        } else {
+            myCheck.option("value", false);
+        }
     });
 
     $("#simpleBtn").dxButton({
