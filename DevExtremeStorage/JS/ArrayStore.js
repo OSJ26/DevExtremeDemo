@@ -35,6 +35,17 @@
         }
     })
 
+    let rButton = $("#dxButtonRetrive").dxButton({
+        text: "Retrive",
+        type: "default",
+        onClick: () => {
+            store.load().done((loadedData) => {
+                console.log(loadedData);
+            }).fail((error) => console.log(error));
+        }
+    })
+
+   
     const store = new DevExpress.data.ArrayStore({
         data: employeeName,
         key: "id",
@@ -56,6 +67,10 @@
         onRemoving: () => console.log("Data removing from the arraystore"),
 
         onRemoved: () => console.log("Data removed from the arraystore"),
+
+        onUpdating: () => console.log("Data is updating"),
+
+        onUpdated: () => console.log("Data was updated"),
 
     })
 })
