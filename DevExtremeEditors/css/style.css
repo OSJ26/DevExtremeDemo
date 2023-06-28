@@ -29,3 +29,10 @@
     padding: 10px;
     display:inline-block;
 }
+
+/*Drop Down Box*/
+.drop{
+    padding: 10px;
+    width: 50%;
+    margin:10px;
+}

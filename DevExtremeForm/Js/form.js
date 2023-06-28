@@ -62,12 +62,14 @@
         },
         showClearButton: true,
 
-        onInput: function () {
+        onInput: function (e) {
+            console.log(e);
             $("#dxPassword").dxTextBox("instance").option("validationStatus", "pending");
         },
 
         onValueChanged: (e) => {
             var newVal = password.option("value");
+            console.log(e);
             password.option("validationStatus", "valid");
             if (newVal == cnfPassword.option("value")) {
                 cnfPassword.option("validationStatus", "valid");

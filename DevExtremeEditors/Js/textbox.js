@@ -106,8 +106,9 @@
             password.option("validationStatus", "valid");
         },
 
-        onFocusOut: () => {
+        onFocusOut: (e) => {
             var value = password.option("value");
+            console.log(e);
             console.log(value);
             if (value == "") {
                 password.option("validationStatus", "invalid");

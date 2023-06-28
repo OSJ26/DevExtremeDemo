@@ -110,6 +110,7 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="css\style.css" />
     <Content Include="images\eye.png" />
+    <Content Include="images\fruit-icon.svg" />
     <Content Include="Js\Button.js" />
     <Content Include="Js\CheckBox.js" />
     <Content Include="Js\DateBox.js" />

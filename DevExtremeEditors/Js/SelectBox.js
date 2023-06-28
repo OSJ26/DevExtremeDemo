@@ -12,9 +12,19 @@
         "Supra"
     ];
 
+    const arrayStore = new DevExpress.data.ArrayStore({
+        data: [
+            {
+                id: 1,
+                name: "Om Joshi"
+            }
+        ]
+    })
+
     $("#dxSelectBox").dxSelectBox({
 
-        items: carDataSource,
+        //items: carDataSource,
+        dataSource: arrayStore,
         placeholder: "Choose Car",
         showClearButton: true,
         hint: "Cars",
@@ -23,7 +33,8 @@
             id: "selectBox"
         },
         searchEnabled: true,
-
+        displayExpr: 'Name',
+        valueExpr: 'id',
         onSelectionChanged: (e) => {
             console.log(e);
             console.log("value selected", e.selectedItem);
