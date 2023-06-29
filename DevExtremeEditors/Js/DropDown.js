@@ -1,7 +1,7 @@
 ﻿$(() => {
 
-    //const fruits = ["Apples", "Oranges", "Lemons", "Pears", "Pineapples"];
-    //const dataSource = fruits;
+    const fruits = ["Apples", "Oranges", "Lemons", "Pears", "Pineapples"];
+    const dataSource = fruits;
 
     const arrayStore = new DevExpress.data.ArrayStore({
         data: [
@@ -21,14 +21,14 @@
     })
 
     $("#simpleDrop").dxDropDownBox({
-        accessKey:"s",
+        accessKey: "s",
         acceptCustomValue: true,
         contentTemplate : (e) => {
             const $list = $("<div>").dxList({
-                arrayStore,
+                dataSource,
                 allowItemDeleting: true,
                 onItemDeleting: function (e) {
-                    if (arrayStore.length === 1) {
+                    if (dataSource.length === 1) {
                         e.cancel = true;
                     }
                 }
@@ -36,6 +36,7 @@
             let myList = $list.dxList("instance");
             return $list;
         },
+        selectionMode: "single",
         inputAttr: {
             id : "simpleDrop"
         },
@@ -63,10 +64,12 @@
     //}
 
     $("#groupDrop").dxDropDownBox({
+        displayExpr: "item",
         contentTemplate: (e) => {
             const $list = $("<div>").dxList({
                 dataSource: employee,
                 height: '100%',
+
                 grouped: true,
                 collapsibleGroups: true,
                 groupTemplate(data) {
