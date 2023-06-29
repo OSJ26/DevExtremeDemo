@@ -35,6 +35,19 @@
         }
     })
 
+    //let pButton = $("#dxButtonPush").dxButton({
+    //    text: "Push",
+    //    type: "default",
+    //    onClick: () => {
+    //        store.push([{
+    //            type: "insert",
+    //            data: {
+                    
+    //            }
+    //        }]);
+    //    }
+    //})
+
     let rButton = $("#dxButtonRetrive").dxButton({
         text: "Retrive",
         type: "default",
@@ -44,7 +57,6 @@
             }).fail((error) => console.log(error));
         }
     })
-
    
     const store = new DevExpress.data.ArrayStore({
         data: employeeName,
