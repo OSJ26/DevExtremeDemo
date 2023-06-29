@@ -51,6 +51,32 @@
         }
     })
 
+    //const employeeList = (jsonData) => {
+    //    return new DevExpress.data.CustomStore({
+    //        loadMode: 'raw',
+    //        key: "key",
+    //        load() {
+    //            return $.getJSON(`../Data/${jsonData}`);
+    //        }
+
+    //    })
+    //}
+
+    $("#groupDrop").dxDropDownBox({
+        contentTemplate: (e) => {
+            const $list = $("<div>").dxList({
+                dataSource: employee,
+                height: '100%',
+                grouped: true,
+                collapsibleGroups: true,
+                groupTemplate(data) {
+                    return $(`<div>Assigned: ${data.key}</div>`);
+                },
+            });
+            let myList = $list.dxList("instance");
+            return $list;
+        },
+    })
 
 
 

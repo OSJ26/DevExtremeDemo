@@ -109,6 +109,7 @@
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
     <Content Include="css\style.css" />
+    <Content Include="Data\employeeList.js" />
     <Content Include="images\eye.png" />
     <Content Include="images\fruit-icon.svg" />
     <Content Include="Js\Button.js" />
@@ -143,6 +144,7 @@
     <Content Include="Content\fonts\Roboto-300.woff" />
     <Content Include="Content\fonts\Roboto-300.ttf" />
     <Content Include="Data\companyList.json" />
+    <Content Include="Data\employeeList.json" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\devextreme-localization\dx.messages.de.js" />
     <Content Include="Scripts\devextreme-localization\dx.messages.en.js" />
