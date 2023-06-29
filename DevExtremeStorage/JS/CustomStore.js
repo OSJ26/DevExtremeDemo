@@ -3,6 +3,7 @@
     let myStore;
     myStore = new DevExpress.data.CustomStore({
         key: "d01F01",
+        cacheRawData: true,
         load: () => {
             return $.ajax({
                 type: "GET",
