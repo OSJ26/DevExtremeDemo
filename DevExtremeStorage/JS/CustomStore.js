@@ -9,7 +9,16 @@
                 type: "GET",
                 url: "https://localhost:7238/api/USED01",
                 success: (e) => {
-                    console.log(e);
+                    $('#myList').dxSelectBox({
+                        dataSource: myStore,
+                        acceptCustomValue: true,
+                        displayExpr: 'd01F02',
+                        valueExpr: 'd01F01',
+                        height: '100%',
+                        width: '300px',
+                        hint: 'Employee List',
+                        showClearButton: true,
+                    });
                     DevExpress.ui.notify("Data Fetched SUccessfully", "success", 500);
                 },
                 error: (e) => {
@@ -19,17 +28,6 @@
             })
         },
         loadMode: "raw",
-    });
-
-    await $('#myList').dxSelectBox({
-        dataSource: myStore,
-        acceptCustomValue: true,
-        displayExpr: 'd01F02',
-        valueExpr: 'd01F01',
-        height: '100%',
-        width: '300px',
-        hint: 'Employee List',
-        showClearButton: true,
     });
 
 })
