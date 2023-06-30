@@ -35,8 +35,8 @@
             })
         },
 
-        update: function (key, values) {
-            return $.ajax({
+        update: async function (key, values) {
+            return await $.ajax({
                 url: "https://localhost:7238/api/USED01?id=" + encodeURIComponent(key),
                 method: "PUT",
                 data: values

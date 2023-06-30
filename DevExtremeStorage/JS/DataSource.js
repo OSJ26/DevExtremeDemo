@@ -2,7 +2,7 @@
     let data = null;
     await $.ajax({
         type: "GET",
-        url: "https://localhost:7256/api/USED01",
+        url: "https://localhost:7238/api/USED01",
         success: (e) => {
             console.log(e);
             data = new DevExpress.data.DataSource({
@@ -20,40 +20,43 @@
         }
     })
     console.log(data);  
+    data.filter(["d01F01", "<",5]);
+    data.load().done((filteredData)=>{
+         $("#mySelect").dxSelectBox({
+            dataSource: filteredData,
+            acceptCustomValue: true,
+            placeholder: "Choose Employee",
+            showClearButton: true,
+            hint: "Employee Name",
+            width: "400px",
+            inputAttr: {
+                id: "selectBox"
+            },
+            searchEnabled: true,
+            displayExpr: 'd01F02',
+            valueExpr: 'd01F01',
 
-    await $("#mySelect").dxSelectBox({
-        dataSource: data,
-        acceptCustomValue: true,
-        placeholder: "Choose Employee",
-        showClearButton: true,
-        hint: "Employee Name",
-        width: "400px",
-        inputAttr: {
-            id: "selectBox"
-        },
-        searchEnabled: true,
-        displayExpr: 'd01F02',
-        valueExpr: 'd01F01',
-        
-        onCustomItemCreating: (e) => {
-            if (!e.text) {
-                e.customItem = null;
-                return;
-            }
+            onCustomItemCreating: (e) => {
+                if (!e.text) {
+                    e.customItem = null;
+                    return;
+                }
 
-            const employeeId = employeeName.map((item) => item.ID);
-            const incrementedId = Math.max.apply(null, employeeId) + 1;
-            const newItem = {
-                d01F02: e.text,
-                d01F01: incrementedId,
-            };
+                const employeeId = employeeName.map((item) => item.ID);
+                const incrementedId = Math.max.apply(null, employeeId) + 1;
+                const newItem = {
+                    d01F02: e.text,
+                    d01F01: incrementedId,
+                };
 
-            e.customItem = data.store().insert(newItem)
-                .then(() => data.load())
-                .then(() => newItem)
-                .catch((error) => {
-                    throw error;
-                });
-        },
-    });
+                e.customItem = data.store().insert(newItem)
+                    .then(() => data.load())
+                    .then(() => newItem)
+                    .catch((error) => {
+                        throw error;
+                    });
+            },
+        });
+    })
+    
 })
