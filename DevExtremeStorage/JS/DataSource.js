@@ -20,13 +20,16 @@
         }
     })
     console.log(data);  
-    data.filter(["d01F01", "<",5]);
+    data.filter(["d01F01", "<", 5]);
+    data.sort('d01F02', 'asc');
     data.load().done((filteredData)=>{
          $("#mySelect").dxSelectBox({
             dataSource: filteredData,
             acceptCustomValue: true,
             placeholder: "Choose Employee",
             showClearButton: true,
+            searchExpr: ['d01F02', 'd01F03'],
+            searchOperation: "contains",
             hint: "Employee Name",
             width: "400px",
             inputAttr: {
