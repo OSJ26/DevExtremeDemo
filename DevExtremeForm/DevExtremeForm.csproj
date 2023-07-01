@@ -108,9 +108,11 @@
     <Content Include="Content\dx.material.teal.light.css" />
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
+    <Content Include="Css\avatar.jpg" />
     <Content Include="Css\style.css" />
     <Content Include="img\eye.png" />
     <Content Include="Js\data.js" />
+    <Content Include="Js\dxForm.js" />
     <Content Include="Js\form.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
@@ -173,6 +175,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="View\DXForm.html" />
     <Content Include="View\form.html" />
     <Content Include="Web.config" />
   </ItemGroup>
