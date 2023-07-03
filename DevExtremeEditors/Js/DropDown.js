@@ -59,15 +59,13 @@
     //        load() {
     //            return $.getJSON(`../Data/${jsonData}`);
     //        }
-
     //    })
     //}
 
     $("#groupDrop").dxDropDownBox({
-        displayExpr: "item",
         contentTemplate: (e) => {
-            const $list = $("<div>").dxList({
-                dataSource: employee,
+            $("<div>").dxList({
+                dataSource: employees,
                 height: '100%',
 
                 grouped: true,
@@ -75,9 +73,16 @@
                 groupTemplate(data) {
                     return $(`<div>Assigned: ${data.key}</div>`);
                 },
+                displayExpr: "item"
+
+                //dataSource: employees,
+                //height: '100%',
+                //grouped: true,
+                //collapsibleGroups: true,
+                //groupTemplate(data) {
+                //    return $(`<div>Assigned: ${data.key}</div>`);
+                //},
             });
-            let myList = $list.dxList("instance");
-            return $list;
         },
     })
 
