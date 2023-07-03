@@ -118,6 +118,7 @@
     <Content Include="Js\DropDown.js" />
     <Content Include="Js\FileUploader.js" />
     <Content Include="Js\NumberBox.js" />
+    <Content Include="Js\RadioGroup.js" />
     <Content Include="Js\SelectBox.js" />
     <Content Include="Js\TextArea.js" />
     <Content Include="Js\textbox.js" />
@@ -190,6 +191,7 @@
     <Content Include="View\DropDown.html" />
     <Content Include="View\FileUploader.html" />
     <Content Include="View\NumberBox.html" />
+    <Content Include="View\RadioGroup.html" />
     <Content Include="View\SelectBox.html" />
     <Content Include="View\TextArea.html" />
     <Content Include="View\textbox.html" />

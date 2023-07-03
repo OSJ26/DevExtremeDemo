@@ -35,6 +35,7 @@
             items: [{
                 itemType: 'group',
                 items: [{
+                    caption: "homeAddress",
                     dataField: 'Address',
                 }, {
                     dataField: 'City',
