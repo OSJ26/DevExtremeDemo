@@ -17,6 +17,7 @@
     })
     $("#dxScrollAndEdit").dxDataGrid({
         dataSource: mySotre,
+        showBorders: true,
         scrolling: {
             columnRenderingMode: "virtual",
             mode: "virtual",
@@ -24,6 +25,33 @@
             rowRenderingMode: "standard",
             useNative: false,
             showScrollbar: "onScroll"
+        },
+        editing: {
+            mode: "popup",
+            allowUpdating: true,
+            allowAdding: true,
+            allowDeleting: true,
+            newRowPosition: "viewportBottom",
+            popup: {
+                width: 700,
+                height: 270,
+            },
+            form: {
+                items: [{
+                    itemType: 'group',
+                    caption: 'Task Details',
+                    colCount: 2,
+                    colSpan: 2,
+                    items: ['UserId', 'Id', 'Title', {
+                        editorType: "dxCheckBox",
+                        editorOption: {
+                            iconSize: "20px",
+                            name: "status",
+                            value: true
+                        }
+                    }],
+                }],
+            }
         },
         columns: [{
             dataField: "userId",
