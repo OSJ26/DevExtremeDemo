@@ -110,6 +110,7 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Js\DataGrid.js" />
     <Content Include="Js\DataGridWithAjax.js" />
+    <Content Include="Js\ScrollAndEdit.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
@@ -173,6 +174,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
     <Content Include="View\DataGrid.html" />
     <Content Include="View\DataGridWithAjax.html" />
+    <Content Include="View\DGWithScroll.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
