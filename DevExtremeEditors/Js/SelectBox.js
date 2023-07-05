@@ -1,40 +1,39 @@
 ﻿$(() => {
 
-    const carDataSource = [
-        "Baleno",
-        "Ciaz",
-        "Elantra",
-        "verna",
-        "Honda City",
-        "inova",
-        "Fortuner",
-        "Defender",
-        "Supra"
+    const carDataSource = [{
+        id: 1,
+        name: "Baleno"
+    },
+    {
+        id: 2,
+        name: "Ciaz"
+    },
+    {
+        id: 3,
+        name: "Defender"
+    },
+    {
+        id: 4,
+        name: "Supra"
+    }
     ];
-
-    const arrayStore = new DevExpress.data.ArrayStore({
-        data: [
-            {
-                id: 1,
-                name: "Om Joshi"
-            }
-        ]
-    })
 
     $("#dxSelectBox").dxSelectBox({
 
-        //items: carDataSource,
-        dataSource: arrayStore,
+        items: carDataSource,
         placeholder: "Choose Car",
         showClearButton: true,
+        showSelectionControls : true,
         hint: "Cars",
         width: "200px",
         inputAttr: {
             id: "selectBox"
         },
+        displayExpr: "name",
         searchEnabled: true,
-        displayExpr: 'Name',
-        valueExpr: 'id',
+        onInitialized: (e) => {
+            console.log(e);
+        },
         onSelectionChanged: (e) => {
             console.log(e);
             console.log("value selected", e.selectedItem);

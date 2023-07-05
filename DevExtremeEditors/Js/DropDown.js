@@ -36,7 +36,7 @@
             let myList = $list.dxList("instance");
             return $list;
         },
-        selectionMode: "single",
+        selectionMode: "multiple",
         inputAttr: {
             id : "simpleDrop"
         },
@@ -49,7 +49,7 @@
             dataSource.push(e.component.option("value"));
             e.component.option("value", "");
             myList.reload();
-        }
+        },
     })
 
     //const employeeList = (jsonData) => {
@@ -65,7 +65,7 @@
     $("#groupDrop").dxDropDownBox({
         contentTemplate: (e) => {
             $("<div>").dxList({
-                dataSource: employees,
+                dataSource: employee,
                 height: '100%',
 
                 grouped: true,
@@ -73,6 +73,7 @@
                 groupTemplate(data) {
                     return $(`<div>Assigned: ${data.key}</div>`);
                 },
+                selectionMode: "multiple",
                 displayExpr: "item"
 
                 //dataSource: employees,
@@ -83,6 +84,7 @@
                 //    return $(`<div>Assigned: ${data.key}</div>`);
                 //},
             });
+            console.log(employee);
         },
     })
 
@@ -110,18 +112,15 @@
                 dataSource: e.component.getDataSource(),
                 columns: ['CompanyName', 'City', 'Phone'],
                 filterRow: { visible: true },
-                selection: { mode: 'single' },
+                selection: { mode: 'multiple' },
                 selectedRowKeys: [value],
                 selectNodesRecursive: false,
                 onSelectionChanged(selectedItems) {
                     const keys = selectedItems.selectedRowKeys;
-                    const hasSelection = keys.length;
-
-                    e.component.option('value', hasSelection ? keys[0] : null);
+                    e.component.option('value', keys);
                 },
             });
             dataGrid = $dataGrid.dxDataGrid('instance');
-
 
             e.component.on('valueChanged', (args) => {
                 dataGrid.selectRows(args.value, false);
@@ -129,6 +128,9 @@
             });
 
             return $dataGrid;
+        },
+        onValueChanged: (e) => {
+            console.log(e.component._changedValue);
         }
     })  
 })
