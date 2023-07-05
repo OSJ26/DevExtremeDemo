@@ -108,6 +108,7 @@
     <Content Include="Content\dx.material.teal.light.css" />
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
+    <Content Include="Js\BatchEditing.js" />
     <Content Include="Js\DataGrid.js" />
     <Content Include="Js\DataGridWithAjax.js" />
     <Content Include="Js\RowEditing.js" />
@@ -173,6 +174,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="View\BatchEditing.html" />
     <Content Include="View\DataGrid.html" />
     <Content Include="View\DataGridWithAjax.html" />
     <Content Include="View\DGWithScroll.html" />
