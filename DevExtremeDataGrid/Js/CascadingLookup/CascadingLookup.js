@@ -6,14 +6,14 @@
         editing: {
             allowUpdating: true,
             allowAdding: true,
-            mode: 'row'
+            mode: 'form'
         },
         onEditorPreparing(e) {
             if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
                 e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
             }
         },
-        columns: ["FirstName", "LastName", "position", {
+        columns: ["FirstName", "LastName", "Position", {
             dataField: "StateID",
             caption: "State",
             lookup: {
@@ -35,6 +35,23 @@
                     valueExpr: "ID",
                     displayExpr: "Name"
                 }
-            },]
+            },],
+        onEditingStart: () => {
+            console.log("Editing started");
+        },
+
+        onEditCanceling: (e) => {
+            console.log("Editing Canceling Decision");
+        },
+        onEditCanceled: () => {
+            console.log("editing canceled by user");
+        },
+        onEditorPrepared: (e) => {
+            //console.log(e);
+            console.log("Editor is prepered for editing");
+        },
+        onEditorPreparing: () => {
+            console.log("Editor is prepering");
+        }
     })
 })

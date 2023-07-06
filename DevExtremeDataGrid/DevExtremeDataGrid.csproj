@@ -110,6 +110,7 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Data\employee.js" />
     <Content Include="Js\BatchEditing.js" />
+    <Content Include="Js\CascadingLookup\CascadeWithDB.js" />
     <Content Include="Js\CascadingLookup\CascadingLookup.js" />
     <Content Include="Js\CellEditing.js" />
     <Content Include="Js\DataGrid.js" />
@@ -179,6 +180,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
     <Content Include="View\BatchEditing.html" />
+    <Content Include="View\CascadingLookups\CascadeWithDB.html" />
     <Content Include="View\CascadingLookups\CascadingLookup.html" />
     <Content Include="View\CellEditing.html" />
     <Content Include="View\DataGrid.html" />
