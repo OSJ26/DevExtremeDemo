@@ -13,7 +13,21 @@
                 e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
             }
         },
-        columns: ["FirstName", "LastName", "Position", {
+        columns: [{
+            dataField: "FirstName",
+            validationRules: [{
+                type: "required",
+                message: "First Name is required"
+            }],
+        },
+        {
+            dataField: "LastName",
+            validationRules: [{
+                type: "required",
+                message: "Last Name is required"
+            }],
+        },
+        {
             dataField: "StateID",
             caption: "State",
             lookup: {
@@ -23,19 +37,22 @@
             }
 
         }, {
-                dataField: "CityID",
-                caption: "City",
-                lookup: {
-                    dataSource(options) {
-                        return {
-                            store: cities,
-                            filter: options.data ? ['StateID', "=", options.data.StateID] : null,
-                        };
-                    },
-                    valueExpr: "ID",
-                    displayExpr: "Name"
-                }
-            },],
+            dataField: "CityID",
+            caption: "City",
+            lookup: {
+                dataSource(options) {
+                    return {
+                        store: cities,
+                        filter: options.data ? ['StateID', "=", options.data.StateID] : null,
+                    };
+                },
+                valueExpr: "ID",
+                displayExpr: "Name"
+            }
+        },],
+        onRowClick: (e) => {
+            console.log(e);
+        },
         onEditingStart: () => {
             console.log("Editing started");
         },
