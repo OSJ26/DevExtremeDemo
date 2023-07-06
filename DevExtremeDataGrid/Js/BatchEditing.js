@@ -85,5 +85,12 @@
         paging: {
             pageSize: 20
         },
+
+        onSaving: (e) =>{
+            console.log(e);
+            if (e.changes.length) {
+                e.component.refresh(true)
+            }
+        }
     });
 })
