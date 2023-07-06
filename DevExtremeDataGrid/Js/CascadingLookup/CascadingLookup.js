@@ -44,7 +44,7 @@
             console.log("Editing Canceling Decision");
         },
         onEditCanceled: () => {
-            console.log("editing canceled by user");
+            console.log("Editing canceled by user");
         },
         onEditorPrepared: (e) => {
             //console.log(e);
