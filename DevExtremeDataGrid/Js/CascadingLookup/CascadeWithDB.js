@@ -54,9 +54,7 @@
             })
         }
     })
-
-
-
+    
     $("#myGrid").dxDataGrid({
         dataSource: employee,
         keyExpr: 'd01F01',
@@ -64,7 +62,7 @@
         editing: {
             allowUpdating: true,
             allowAdding: true,
-            mode: 'form'
+            mode: 'row'
         },
         columns: [
             {
@@ -92,7 +90,12 @@
                 dataField: "d01F05",
                 caption: "City",
                 lookup: {
-                    dataSource: city,
+                    dataSource(options) {
+                        return {
+                            store: city,
+                            filter: options.data ? ['d02F01', "=", options.data.d02F01] : null,
+                        };
+                    },
                     valueExpr: "d03F01",
                     displayExpr: "d03F02"
                 }
