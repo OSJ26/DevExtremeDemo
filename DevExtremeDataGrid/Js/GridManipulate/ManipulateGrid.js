@@ -54,9 +54,9 @@
         Filtering End
         */
 
-       /*
-       Sorting Start
-       */
+        /*
+        Sorting Start
+        */
         sorting: {
             mode: 'multiple',
             ascendingText: 'Make Ascending',
@@ -67,6 +67,14 @@
         /*
         Sorting End
         */
+
+        /*
+        Slection 
+        */
+        selection: {
+            mode: 'multiple',
+            selectAllMode: "page"
+        },
 
         columns: [
             {
@@ -105,19 +113,47 @@
                     type: "required"
                 }]
             }
-        ]
+        ],
+
+        onSelectionChanged: (selectedItem) => {
+            const data = selectedItem.selectedRowsData;
+            if (data.length > 0) {
+                $('#data').text(
+                    data
+                        .map((value) => `${value.d01F02}`)
+                        .join(', '),
+                );
+            } else {
+                $('#data').text('Nobody has been selected');
+            }
+        }
     });
 
     $("#myButton").dxButton({
         text: "Clear Sorting",
         onClick: () => {
             $("#myGrid").dxDataGrid("instance").clearSorting();
+        },
+        onInitialized: () => {
+            $('#myButton').addClass("button");
         }
     })
     $("#clGroup").dxButton({
         text: "Clear Grouping",
         onClick: () => {
             $("#myGrid").dxDataGrid("instance").clearGrouping();
+        },
+        onInitialized: () => {
+            $('#clGroup').addClass("button");
         }
-    })
+    });
+    $("#clSelection").dxButton({
+        text: "Clear Selection",
+        onClick: () => {
+            $("#myGrid").dxDataGrid("instance").clearSelection();
+        },
+        onInitialized: () => {
+            $('#clSelection').addClass("button");
+        }
+    });
 })

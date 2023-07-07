@@ -6,11 +6,46 @@
     <link href="/Content/dx.material.blue.dark.compact.css" rel="stylesheet" />
     <script src="/Scripts/jquery-3.5.1.min.js"></script>
     <script src="/Scripts/dx.all.js"></script>
+
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 100%;
+            border-radius: 20px;
+            height: auto;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .button {
+            background-color: #1E88E5;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+    </style>
 </head>
 <body>
     <div id="myGrid"></div><br />
-    <div id="myButton"></div><br /><br />
+    <div id="myButton"></div>
     <div id="clGroup"></div>
+    <div id="clSelection"></div>
+
+    <div id="UserInfo" class="card">
+        <p id="data" class="container"></p>
+    </div>
     <script src="/Js/GridManipulate/ManipulateGrid.js"></script>
 </body>
 </html>
