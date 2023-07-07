@@ -69,13 +69,15 @@
         */
 
         /*
-        Slection 
+        Slection Start
         */
         selection: {
             mode: 'multiple',
             selectAllMode: "page"
         },
-
+        /*
+        Selection End
+        */
         columns: [
             {
                 dataField: "d01F01",
