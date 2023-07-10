@@ -1,6 +1,7 @@
 ﻿$(() => {
-    let dtoModel;
-    let mySotre = new DevExpress.data.CustomStore({
+    let dataModel;
+    let mySotre;
+    mySotre = new DevExpress.data.CustomStore({
         key: "d01F01",
         load: async function () {
             return await $.ajax({
@@ -15,18 +16,8 @@
 
             })
         },
-        insert: async function (e) {
-            return await $.ajax({
-                type: "POST",
-                url: "https://localhost:7238/api/USED01",
-                data: dtoModel,
-                success: (e) => {
-                    DevExpress.ui.notify("Data Inserted Successfully", "success", 500);
-                },
-                error: (e) => {
-                    DevExpress.ui.notify("Data Not Inserted", "Error", 500);
-                }
-            })
+        insert: (e) => {
+            console.log(e);
         }
     })
     $("#myDataGrid").dxDataGrid({
@@ -107,8 +98,51 @@
             console.log("Editing Canceling");
             console.log(e);
         },
-        onRowInserting: (e) => {
+        onRowInserted: (e) => {
             console.log(e);
+            let d01F01 = null;
+            let d01F02 = e.data.d01F02;
+            let d01F03 = e.data.d01F03;
+            let d01F04 = e.data.d01F04;
+            let d01F05 = e.data.d01F05;
+            let d01F06 = e.data.d01F06;
+            dataModel = {
+                d01F01,
+                d01F02,
+                d01F03,
+                d01F04,
+                d01F05,
+                d01F06
+            };
+            console.log(dataModel);
+            const deferred = $.Deferred();
+            const promptPromise = DevExpress.ui.dialog.confirm("Are you sure?", "Confirm changes");
+            promptPromise.done((dialogResult) => {
+                if (dialogResult) {
+                    $.ajax({
+                        url: "https://localhost:7238/api/USED01",
+                        type: "POST",
+                        dataType: "json",
+                        contentType: "application/json",
+                        data:  dataModel,
+                        success: function (validationResult) {
+                            if (validationResult.errorText) {
+                                deferred.reject(validationResult.errorText);
+                            } else {
+                                deferred.resolve(false);
+                            }
+                            myStore.insert(dataModel);
+                        },
+                        error: function () {
+                            deferred.reject("Data Loading Error");
+                        },
+                        timeout: 5000
+                    });
+                } else {
+                    deferred.resolve(true);
+                }
+            });
+            e.cancel = deferred.promise();
         },
         onSaving: (e) =>{
             console.log(e);
