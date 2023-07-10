@@ -1,4 +1,5 @@
 ﻿$(() => {
+    let dtoModel;
     let mySotre = new DevExpress.data.CustomStore({
         key: "d01F01",
         load: async function () {
@@ -12,6 +13,19 @@
                     DevExpress.ui.notify("Data Not Fetched", "Error", 500);
                 }
 
+            })
+        },
+        insert: async function (e) {
+            return await $.ajax({
+                type: "POST",
+                url: "https://localhost:7238/api/USED01",
+                data: dtoModel,
+                success: (e) => {
+                    DevExpress.ui.notify("Data Inserted Successfully", "success", 500);
+                },
+                error: (e) => {
+                    DevExpress.ui.notify("Data Not Inserted", "Error", 500);
+                }
             })
         }
     })
@@ -91,6 +105,9 @@
         },
         onEditCanceling: (e) => {
             console.log("Editing Canceling");
+            console.log(e);
+        },
+        onRowInserting: (e) => {
             console.log(e);
         },
         onSaving: (e) =>{
