@@ -25,7 +25,7 @@
         columnChooser: {
             enabled: true,
             emptyPanelText: "Let's Hide Some Column",
-            mode: "select",
+            mode: "DragandDrop",
             search: {
                 editorOptions: {
                     placeholder: "Search Column",
@@ -45,43 +45,52 @@
             dataField: "d01F01",
             caption: "User Id",
             sortOrdder: 'asc',
-            width: "170px",
+            width: "160px",
             alignment: "center",
         },
         {
-            dataField: "d01F02",
-            caption: "User First Name",
-            showInColumnChooser: false,
-            allowEditing: true,
-            width: "200px",
+            caption: "Personal Details",
             alignment: "center",
+            columns: [{
+                dataField: "d01F02",
+                caption: "User First Name",
+                showInColumnChooser: false,
+                allowEditing: true,
+                width: "200px",
+                alignment: "center",
+            },
+            {
+                dataField: "d01F03",
+                caption: "User Last Name",
+                showInColumnChooser: false,
+                width: "200px",
+                alignment: "center",
+            },
+            {
+                dataField: "d01F04",
+                caption: "User Address",
+                width: "200px",
+                alignment: "center",
+            },]
         },
         {
-            dataField: "d01F03",
-            caption: "User Last Name",
-            showInColumnChooser: false,
-            width: "200px",
+            caption: "Contact Details",
             alignment: "center",
+            columns: [{
+                dataField: "d01F05",
+                caption: "User phone number",
+                width: "120px",
+                alignment: "center",
+            },
+            {
+                dataField: "d01F06",
+                caption: "User Email",
+                showInColumnChooser: false,
+                width: "400px",
+                alignment: "center",
+            },]
         },
-        {
-            dataField: "d01F04",
-            caption: "User Address",
-            width: "200px",
-            alignment: "center",
-        },
-        {
-            dataField: "d01F05",
-            caption: "User phone number",
-            width: "100px",
-            alignment: "center",
-        },
-        {
-            dataField: "d01F06",
-            caption: "User Email",
-            showInColumnChooser: false,
-            width: "400px",
-            alignment: "center",
-        },
+
         {
             dataField: "d01F07",
             caption: "User Password",
@@ -89,11 +98,11 @@
             alignment: "center",
             showInColumnChooser: false,
             visible: false
-        },
+        }
         ],
         pager: {
             allowedPageSizes: [5, 8, 15, 30],
-            //showInfo: true,
+            showInfo: true,
             showNavigationButtons: true,
             showPageSizeSelector: true,
             visible: true,
@@ -108,5 +117,5 @@
         }
     }).dxDataGrid("instance");
 
-    
+
 })
