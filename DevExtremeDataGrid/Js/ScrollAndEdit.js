@@ -53,10 +53,14 @@
                 }],
             }
         },
+        groupPanel: {
+            visible: true,
+        },
         columns: [{
             dataField: "userId",
             sortOrdder: 'asc',
             width: "170px",
+            groupIndex: 0,
             alignment: "center",
         },
         {

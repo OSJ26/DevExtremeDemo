@@ -53,7 +53,8 @@
                 }
             })
         }
-    })
+    });
+    console.log(city);
     
     $("#myGrid").dxDataGrid({
         dataSource: employee,

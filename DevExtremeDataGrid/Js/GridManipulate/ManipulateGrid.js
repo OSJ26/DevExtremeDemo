@@ -80,7 +80,7 @@
         */
         columns: [
             {
-                dataField: "d01F01",
+                dataField: "d01F0",
                 caption: "Product Id",
                 allowGrouping: false,
                 allowSorting: false,
