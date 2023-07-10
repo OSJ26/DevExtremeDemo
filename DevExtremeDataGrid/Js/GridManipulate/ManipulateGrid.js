@@ -128,6 +128,13 @@
             } else {
                 $('#data').text('Nobody has been selected');
             }
+        },
+
+        onCellPrepared: (e) => {
+            console.log(e);
+            if (e.rowType === "data" && e.column.dataField === "d01F03") {
+                e.cellElement.css("color", e.data.d01F03 > 38 ? "green" : "red");
+            }
         }
     });
 

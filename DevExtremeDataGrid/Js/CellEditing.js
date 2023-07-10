@@ -24,6 +24,11 @@
             allowDeleting: true,
             allowAdding: true,
         },
+
+        onEditingStart: (e) => {
+            console.log(e);
+        },
+
         columns: [{
             dataField: "d01F01",
             caption: "User Id",

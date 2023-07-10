@@ -85,7 +85,14 @@
         paging: {
             pageSize: 20
         },
-
+        onEditCanceled: (e) => {
+            console.log("Editing Canceled");
+            console.log(e);
+        },
+        onEditCanceling: (e) => {
+            console.log("Editing Canceling");
+            console.log(e);
+        },
         onSaving: (e) =>{
             console.log(e);
             if (e.changes.length) {
