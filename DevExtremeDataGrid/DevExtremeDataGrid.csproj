@@ -127,6 +127,7 @@
     <Content Include="Js\GridManipulate\ManipulateGrid.js" />
     <Content Include="Js\RowEditing.js" />
     <Content Include="Js\ScrollAndEdit.js" />
+    <Content Include="Js\ToolBar.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
@@ -200,6 +201,7 @@
     <Content Include="View\FormEditing.html" />
     <Content Include="View\GridManipulate\ManipulateGrid.html" />
     <Content Include="View\RowEditing.html" />
+    <Content Include="View\ToolBarCustomization.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
