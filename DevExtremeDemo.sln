@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtremeDataGrid", "DevEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtremeStorage", "DevExtremeStorage\DevExtremeStorage.csproj", "{49D0B64F-6554-4423-B376-855069BA869A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtremeFinalDemo", "DevExtremeFinalDemo\DevExtremeFinalDemo.csproj", "{48E35122-DAF4-41DE-ABD3-D357FAF954ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{49D0B64F-6554-4423-B376-855069BA869A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D0B64F-6554-4423-B376-855069BA869A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D0B64F-6554-4423-B376-855069BA869A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E35122-DAF4-41DE-ABD3-D357FAF954ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E35122-DAF4-41DE-ABD3-D357FAF954ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E35122-DAF4-41DE-ABD3-D357FAF954ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E35122-DAF4-41DE-ABD3-D357FAF954ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
