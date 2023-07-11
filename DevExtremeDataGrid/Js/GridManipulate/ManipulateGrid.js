@@ -23,6 +23,9 @@
         dataSource: myStore,
         keyExpr: "d01F01",
         showBorders: true,
+        showColumnLines: true,
+        showRowLines: true,
+        rowAlternationEnabled: true,
         editing: {
             allowUpdating: true,
             allowAdding: true,
@@ -78,9 +81,22 @@
         /*
         Selection End
         */
+
+       /*
+       State Storing Code
+       */
+        stateStoring: {
+            enabled: true,
+            type: "sessionStorage",
+            storageKey: "StateStoring",
+            savingTimeout: 5000,
+        },
+      /*
+      State Storing End
+      */
         columns: [
             {
-                dataField: "d01F0",
+                dataField: "d01F01",
                 caption: "Product Id",
                 allowGrouping: false,
                 allowSorting: false,
@@ -131,9 +147,8 @@
         },
 
         onCellPrepared: (e) => {
-            console.log(e);
             if (e.rowType === "data" && e.column.dataField === "d01F03") {
-                e.cellElement.css("color", e.data.d01F03 > 38 ? "green" : "red");
+                e.cellElement.css("color", e.data.d01F03 > 38 ? "green"  : "red");
             }
         }
     });
@@ -163,6 +178,15 @@
         },
         onInitialized: () => {
             $('#clSelection').addClass("button");
+        }
+    });
+    $("#clState").dxButton({
+        text: "Clear State",
+        onClick: () => {
+            $("#myGrid").dxDataGrid("instance").state(null);
+        },
+        onInitialized: () => {
+            $('#clState').addClass("button");
         }
     });
 })
