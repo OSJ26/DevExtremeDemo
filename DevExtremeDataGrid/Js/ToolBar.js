@@ -20,7 +20,9 @@
     $('#grid').dxDataGrid({
         dataSource: mySotre,
         showBorders: true,
-        rowAlterationEnabled: true,
+        showColumnLines: true,
+        showRowLines: true,
+        rowAlternationEnabled: true,
         keyExpr: "d04F01",
         columns: [
             {
@@ -57,19 +59,15 @@
                     location: 'before',
                     widget: 'dxButton',
                     options: {
-                        text: "Collepse All",
-                        width: 136,
+                        icon: "showpanel",
                         onClick(e) {
-                            const expanding = e.component.option("text") === "Expand All";
+                            const expanding = e.component.option("icon") === "showpanel";
                             $('#grid').dxDataGrid("instance").option('grouping.autoExpandAll', expanding);
-                            e.component.option('text', expanding ? 'Collapse All' : 'Expand All');
+                            e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
                         },
-                        inputAttr: {
-                            id: "myButton"
-                        },
-                        onInitialized: () => {
-                            $('#myButton').addClass("button");
-                        },
+                        elementAttr: {
+                            class: "button"
+                        }
                     }
                 },
 
@@ -78,7 +76,9 @@
                     widget: 'dxButton',
                     options: {
                         icon: 'clear',
-                        text: "clear grouping",
+                        elementAttr: {
+                            class: "button"
+                        },
                         onClick() {
                             $('#grid').dxDataGrid("instance").clearGrouping();
                         },
@@ -94,6 +94,9 @@
                             $('#grid').dxDataGrid("instance").refresh();
                             DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
                         },
+                        elementAttr: {
+                            class: "button"
+                        }
                     }
                 },
                 {
@@ -115,6 +118,9 @@
                             $('#grid').dxDataGrid("instance").clearGrouping();
                             $('#grid').dxDataGrid("instance").columnOption(e.value, 'groupIndex', 0);
                         },
+                        elementAttr: {
+                            class: "select"
+                        }
                     },
 
                 },

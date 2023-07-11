@@ -132,7 +132,12 @@
                 }]
             }
         ],
-
+        summary: {
+            totalItems: [{
+                column: 'd01F05',
+                summaryType: 'min',
+            }]
+        },
         onSelectionChanged: (selectedItem) => {
             const data = selectedItem.selectedRowsData;
             if (data.length > 0) {
