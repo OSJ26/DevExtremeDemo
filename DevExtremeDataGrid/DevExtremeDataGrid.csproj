@@ -108,13 +108,19 @@
     <Content Include="Content\dx.material.teal.light.css" />
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
+    <Content Include="Data\customCell.js" />
     <Content Include="Data\Data.js" />
     <Content Include="Data\employee.js" />
+    <Content Include="img\blacks-and-whites-carnival %281%29.png" />
+    <Content Include="img\blacks-and-whites-carnival.png" />
+    <Content Include="img\carnival.png" />
+    <Content Include="img\operator.png" />
     <Content Include="Js\BatchEditing.js" />
     <Content Include="Js\CascadingLookup\CascadeWithDB.js" />
     <Content Include="Js\CascadingLookup\CascadingLookup.js" />
     <Content Include="Js\CellEditing.js" />
     <Content Include="Js\CollepsiveGrid.js" />
+    <Content Include="Js\Customization.js" />
     <Content Include="Js\DataGrid.js" />
     <Content Include="Js\DataGridWithAjax.js" />
     <Content Include="Js\FormEditing.js" />
@@ -187,6 +193,7 @@
     <Content Include="View\CascadingLookups\CascadingLookup.html" />
     <Content Include="View\CellEditing.html" />
     <Content Include="View\CollepsiveDataGrid.html" />
+    <Content Include="View\CustomizationGrid.html" />
     <Content Include="View\DataGrid.html" />
     <Content Include="View\DataGridWithAjax.html" />
     <Content Include="View\DGWithScroll.html" />
