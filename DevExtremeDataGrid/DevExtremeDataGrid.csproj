@@ -109,6 +109,7 @@
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Data\customCell.js" />
+    <Content Include="Data\customSummary.js" />
     <Content Include="Data\Data.js" />
     <Content Include="Data\employee.js" />
     <Content Include="img\blacks-and-whites-carnival %281%29.png" />
@@ -121,6 +122,7 @@
     <Content Include="Js\CellEditing.js" />
     <Content Include="Js\CollepsiveGrid.js" />
     <Content Include="Js\Customization.js" />
+    <Content Include="Js\CustomSummary.js" />
     <Content Include="Js\DataGrid.js" />
     <Content Include="Js\DataGridWithAjax.js" />
     <Content Include="Js\FormEditing.js" />
@@ -195,6 +197,7 @@
     <Content Include="View\CellEditing.html" />
     <Content Include="View\CollepsiveDataGrid.html" />
     <Content Include="View\CustomizationGrid.html" />
+    <Content Include="View\CustomSummary.html" />
     <Content Include="View\DataGrid.html" />
     <Content Include="View\DataGridWithAjax.html" />
     <Content Include="View\DGWithScroll.html" />

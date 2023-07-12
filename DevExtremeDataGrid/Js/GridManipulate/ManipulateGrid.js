@@ -52,7 +52,7 @@
             visible: true,
             allowSearch: true
         },
-        filterValue: [["d01F02", "=", "Lettuce - Romaine, Heart"]], //generate filtered grid
+        filterValue: [["d01F02", "=", "Mi PowerBack 3i 20000mah	"]], //generate filtered grid
         /*
         Filtering End
         */
@@ -82,18 +82,67 @@
         Selection End
         */
 
-       /*
-       State Storing Code
-       */
+        /*
+        State Storing Code
+        */
         stateStoring: {
             enabled: true,
             type: "sessionStorage",
             storageKey: "StateStoring",
             savingTimeout: 5000,
         },
-      /*
-      State Storing End
-      */
+        /*
+        State Storing End
+        */
+        /*
+        Summary 
+        */
+        summary: {
+            totalItems: [
+                {
+                    column: 'd01F02',
+                    summaryType: 'count',
+                },
+                {
+                    column: 'd01F05',
+                    summaryType: 'min',
+                    customizeText(data) {
+                        return `First: ${DevExpress.localization.formatDate(data.value)}`;
+                    },
+                },
+                {
+                    column: 'd01F03',
+                    summaryType: 'sum',
+                    customizeText(data) {
+                        return `Total : ${DevExpress.localization.formatDate(data.value + "₹")}`;
+                    },
+                    valueFormat: 'currency'
+
+                },
+            //    {
+            //        name: 'SelectedRowsSummary',
+            //        showInColumn: 'd01F03',
+            //        displayFormat: 'Sum: {0}',
+            //        summaryType: 'custom',
+            //    },
+            //],
+            //calculateCustomSummary(options) {
+            //    console.log(options);
+            //    if (options.name === 'SelectedRowsSummary') {
+            //        if (options.summaryProcess === 'start') {
+            //            options.totalValue = 0;
+            //        }
+            //        if (options.summaryProcess === "calculate") {
+            //            if (options.component.isRowSelected(options.value.d01F01)) {
+            //                options.totalValue += options.value.d01F03;
+            //            }
+            //        }
+            //    }
+            //},
+        },
+        /*
+        Summary End
+        */
         columns: [
             {
                 dataField: "d01F01",
@@ -132,12 +181,7 @@
                 }]
             }
         ],
-        summary: {
-            totalItems: [{
-                column: 'd01F05',
-                summaryType: 'min',
-            }]
-        },
+
         onSelectionChanged: (selectedItem) => {
             const data = selectedItem.selectedRowsData;
             if (data.length > 0) {
@@ -153,7 +197,7 @@
 
         onCellPrepared: (e) => {
             if (e.rowType === "data" && e.column.dataField === "d01F03") {
-                e.cellElement.css("color", e.data.d01F03 > 38 ? "green"  : "red");
+                e.cellElement.css("color", e.data.d01F03 > 400 ? "green" : "red");
             }
         }
     });
