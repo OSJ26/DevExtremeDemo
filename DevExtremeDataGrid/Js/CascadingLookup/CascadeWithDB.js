@@ -1,6 +1,6 @@
 ﻿$(() => {
 
-    let employee = new DevExpress.data.CustomStore({
+    ;let employee = new DevExpress.data.CustomStore({
         key: "d01F01",
         cacheRawData: true,
         load: async function () {
@@ -54,7 +54,7 @@
             })
         }
     });
-    console.log(city);
+    console.log(city)
     
     $("#myGrid").dxDataGrid({
         dataSource: employee,

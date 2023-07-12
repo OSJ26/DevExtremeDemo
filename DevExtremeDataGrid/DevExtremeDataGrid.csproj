@@ -127,6 +127,7 @@
     <Content Include="Js\DataGridWithAjax.js" />
     <Content Include="Js\FormEditing.js" />
     <Content Include="Js\GridManipulate\ManipulateGrid.js" />
+    <Content Include="Js\MasterDetail\MasterDetail.js" />
     <Content Include="Js\RowEditing.js" />
     <Content Include="Js\ScrollAndEdit.js" />
     <Content Include="Js\ToolBar.js" />
@@ -203,6 +204,7 @@
     <Content Include="View\DGWithScroll.html" />
     <Content Include="View\FormEditing.html" />
     <Content Include="View\GridManipulate\ManipulateGrid.html" />
+    <Content Include="View\MsterDetailView\MasterDetail.html" />
     <Content Include="View\RowEditing.html" />
     <Content Include="View\ToolBarCustomization.html" />
     <Content Include="Web.config" />
