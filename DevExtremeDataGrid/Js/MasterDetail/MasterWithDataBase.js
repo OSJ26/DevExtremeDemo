@@ -23,7 +23,7 @@
         load: () => {
             return $.ajax({
                 type: "GET",
-                url: "https://localhost:7125/api/STAS" + d02F04,
+                url: "https://localhost:7125/api/STAS/" + key,
                 success: (e) => {
                     console.log(e);
                     DevExpress.ui.notify("Data Fetched SUccessfully", "success", 500);
@@ -71,7 +71,10 @@
                         }
                     ],
                     dataSource: tasks,
-                    
+                    onItemClick: (e) => {
+                        console.log(e);
+                        key = e.data.d01F01;
+                    }
                 }).appendTo(containor);
             }
         }

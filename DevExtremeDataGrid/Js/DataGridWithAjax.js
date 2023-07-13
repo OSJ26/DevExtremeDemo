@@ -1,4 +1,5 @@
-﻿$(() => {
+﻿window.jsPDF = window.jspdf.jsPDF;
+$(() => {
 
     let myStore = new DevExpress.data.CustomStore({
         key: "d01F01",
@@ -40,7 +41,6 @@
         allowColumnResizing: true,
         allowColumnReordering: true,
         showBorders: true,
-
         columns: [{
             dataField: "d01F01",
             caption: "User Id",
@@ -114,6 +114,51 @@
             allowAdding: true,
             allowDeleting: true,
             allowUpdating: true
+        },
+        export: {
+            enabled: true,
+            formats: ['pdf'],
+            allowExportSelectedData: true
+        },
+        onExporting: (e) => {
+            const doc = new jsPDF();
+            const lastPoint = { x: 0, y: 0 };
+            DevExpress.pdfExporter.exportDataGrid({
+                jsPDFDocument: doc,
+                component: e.component,
+                indent: 5,
+                customizeCell({ gridCell, pdfCell }) {
+                    if (gridCell.rowType === "header") {
+                        pdfCell.backgroundColor = '#BEDFE6';
+                        pdfCell.font.style = 'italic';
+                        pdfCell.font.color = '#00000';
+                    }
+                },
+                customDrawCell({ rect }) {
+                    if (lastPoint.x < rect.x + rect.w) {
+                        lastPoint.x = rect.x + rect.w;
+                    }
+                    if (lastPoint.y < rect.y + rect.h) {
+                        lastPoint.y = rect.y + rect.h;
+                    }
+                },
+            }).then(() => {
+                const header = 'Employee Personal Details';
+                const pageWidth = doc.internal.pageSize.getWidth();
+                console.log("pageWidth" + pageWidth);
+                doc.setFontSize(16);
+                const headerWidth = doc.getTextDimensions(header).w;
+                console.log("Header Width" + headerWidth);
+                doc.text(header, (pageWidth - headerWidth) / 2, 10);
+
+                const footer = "it's Osj®";
+                doc.setFontSize(12);
+                doc.setTextColor("#cccccc");
+                const footerWidth = doc.getTextDimensions(footer).w;
+                doc.text(footer, (lastPoint.x - footerWidth), lastPoint.y + 8);
+                doc.save('DataGrid.pdf');
+                console.log(doc);
+            })
         }
     }).dxDataGrid("instance");
 
