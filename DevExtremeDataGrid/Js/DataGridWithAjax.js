@@ -23,6 +23,9 @@ $(() => {
         cacheEnabled: true,
         showBorder: true,
         columnMinWidth: 100,
+        selection: {
+            mode: 'multiple'
+        },
         columnChooser: {
             enabled: true,
             emptyPanelText: "Let's Hide Some Column",
@@ -118,7 +121,7 @@ $(() => {
         export: {
             enabled: true,
             formats: ['pdf'],
-            allowExportSelectedData: true
+            allowExportSelectedData: true,
         },
         onExporting: (e) => {
             const doc = new jsPDF();

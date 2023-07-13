@@ -112,32 +112,89 @@
             dataField: 'OrderNumber',
             width: 130,
             caption: 'Invoice Number',
+            alignment: 'center'
         }, {
             width: 160,
             dataField: 'OrderDate',
             dataType: 'date',
+            alignment: 'center'
         },
         {
             dataField: 'TotalAmount',
             alignment: 'right',
             format: 'currency',
+            alignment: 'center'
         },
         {
             dataField: 'Employee',
             groupIndex: 0,
+            alignment: 'center'
         },
         {
             caption: 'City',
             dataField: 'CustomerStoreCity',
+            alignment: 'center'
         }, {
             caption: 'State',
             dataField: 'CustomerStoreState',
+            alignment: 'center',
+            //allowExporting: false
         }, {
             dataField: 'SaleAmount',
             alignment: 'right',
             format: 'currency',
+            alignment: 'center'
         },
         ],
+        selection: {
+            mode: 'multiple'
+        },
+        export: {
+            enabled: true,
+            allowExportSelectedData: true,
+        },
+        onExporting: (e) => {
+            const workBook = new ExcelJS.Workbook();
+            const worksheet = workBook.addWorksheet('Orders');
 
+            DevExpress.excelExporter.exportDataGrid({
+                component: e.component,
+                worksheet,
+                autoFilterEnabled: true,
+                topLeftCell: { row: 4, column: 1 },
+                customizeCell(options) {
+                    const { gridCell } = options;
+                    const { excelCell } = options;
+                    if (gridCell.rowType === 'group') {
+                        excelCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'BEDFE6' } };
+                    }
+                    if (gridCell.rowType === 'totalFooter' && excelCell.value) {
+                        excelCell.font.italic = true;
+                    }
+                }
+            }).then((cellRange) => {
+                const headerRow = worksheet.getRow(2);
+                headerRow.height = 30;
+                worksheet.mergeCells(2, 1, 2, 6);
+
+                headerRow.getCell(1).value = "Orders Details with Summary";
+                headerRow.getCell(1).font = { name: 'Bell MT', size: 22 };
+                headerRow.getCell(1).alignment = { horizontal: 'center' };
+
+                const footerRowIndex = cellRange.to.row + 2;
+                const footerRow = worksheet.getRow(footerRowIndex);
+                worksheet.mergeCells(footerRowIndex, 1, footerRowIndex, 6);
+
+                footerRow.getCell(1).value = 'Osj Generated Excel';
+                footerRow.getCell(1).font = { color: { argb: 'BFBFBF' }, italic: true };
+                footerRow.getCell(1).alignment = { horizontal: 'right' };
+
+            }).then(() => {
+                workBook.xlsx.writeBuffer().then((buffer) => {
+                    saveAs(new Blob([buffer], {type:'applicaiton/octet-stream'}),'CustomExcel.xlsx')
+                })
+            })
+            e.cancel = true;
+        }
     });
 })

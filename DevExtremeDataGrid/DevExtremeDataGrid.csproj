@@ -126,6 +126,7 @@
     <Content Include="Js\CustomSummary.js" />
     <Content Include="Js\DataGrid.js" />
     <Content Include="Js\DataGridWithAjax.js" />
+    <Content Include="Js\ExportOption.js" />
     <Content Include="Js\FormEditing.js" />
     <Content Include="Js\GridManipulate\ManipulateGrid.js" />
     <Content Include="Js\MasterDetail\MasterDetail.js" />
@@ -204,6 +205,7 @@
     <Content Include="View\DataGrid.html" />
     <Content Include="View\DataGridWithAjax.html" />
     <Content Include="View\DGWithScroll.html" />
+    <Content Include="View\ExportOption.html" />
     <Content Include="View\FormEditing.html" />
     <Content Include="View\GridManipulate\ManipulateGrid.html" />
     <Content Include="View\MsterDetailView\MasterDetail.html" />
