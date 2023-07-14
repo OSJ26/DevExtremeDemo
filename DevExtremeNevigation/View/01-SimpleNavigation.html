@@ -10,14 +10,23 @@
     <!-- DevExtreme library -->
     <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/22.1.10/js/dx.all.js"></script>
 
+    <link href="../Style/style.css" />
+
     <style>
-        #menu1 {
-            height: 30px;
+        #menu1{
+            height:30px;
         }
     </style>
 </head>
 <body>
-    <div id="menu1"></div>
+    <div class="form">
+        <div id="menu1"></div>
+        <div id="product-details" class="hidden">
+            <img src="" />
+            <div class="name"></div>
+            <div class="price"></div>
+        </div>
+    </div>
     <script src="../Js/01-SimpleNavigation.js"></script>
     <script src="../Data/01-data.js"></script>
 </body>
