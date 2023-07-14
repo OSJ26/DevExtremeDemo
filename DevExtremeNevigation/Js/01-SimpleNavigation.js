@@ -4,6 +4,8 @@
         dataSource: menuData,
         displayExpr : 'name',
         orientation: 'horizontal',
+        width: 400,
+        adaptivityEnabled: true,
         showFirstSubmenuMode: {
             name: 'onHover',
             delay: { show: 0, hide: 500 },
