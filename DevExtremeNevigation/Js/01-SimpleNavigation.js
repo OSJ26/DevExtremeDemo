@@ -8,7 +8,6 @@
             name: 'onHover',
             delay: { show: 0, hide: 500 },
         },
-        cssClass:'menu' ,
         onItemClick: (data) => {
             const item = data.itemData;
             if (item.price) {
