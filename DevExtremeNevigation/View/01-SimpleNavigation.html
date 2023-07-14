@@ -1,30 +1,25 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<html>
+
 <head>
-    <title>DevExtreme Demo</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    
-    <link href="../Content/dx.light.compact.css" />
-    <script src="../Scripts/jquery-3.5.1.min.js"></script>
-    <script src="../Scripts/dx.all.js"></script>
-    <link href="../Style/style.css" />
-    <script src="../Data/01-data.js"></script>
+    <title>Menu</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- DevExtreme theme -->
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/22.1.10/css/dx.light.css">
+
+    <!-- DevExtreme library -->
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/22.1.10/js/dx.all.js"></script>
+
+    <style>
+        #menu1 {
+            height: 30px;
+        }
+    </style>
 </head>
-<body class="dx-viewport">
-    <div class="demo-container">
-        <div class="form">
-            <div>
-                <div class="label">Catalog:</div>
-                <div id="menu"></div>
-                <div id="product-details" class="hidden">
-                    <img src="" />
-                    <div class="name"></div>
-                    <div class="price"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+<body>
+    <div id="menu1"></div>
+    <script src="../Js/01-SimpleNavigation.js"></script>
+    <script src="../Data/01-data.js"></script>
 </body>
+
 </html>

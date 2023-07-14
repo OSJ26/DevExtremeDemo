@@ -1,16 +1,28 @@
 ﻿$(() => {
-    const dxMenu = $('#menu').dxMenu({
+
+    $("#menu1").dxMenu({
         dataSource: menuData,
-        hideSubmenuOnMouseLeave: false,
-        displayExpr: 'name',
-        onItemClick(data) {
-            const item = data.itemData;
-            if (item.price) {
-                $('#product-details').removeClass('hidden');
-                $('#product-details > img').attr('src', item.icon);
-                $('#product-details > .price').text(`$${item.price}`);
-                $('#product-details > .name').text(item.name);
-            }
+        displayExpr : 'name',
+        //orientation: 'vertical',
+        showFirstSubmenuMode: {
+            name: 'onHover',
+            delay: { show: 0, hide: 500 },
         },
-    }).dxMenu('instance');  
+        //submenuDirection:'rightOrBottom' not working 
+        onItemClick: (e) => {
+            console.log("Items Selected is: " +e.itemData.name);
+        },
+        onSubmenuHidden: (e) => {
+            console.log("Exited From: " +e.rootItem[0].innerText);
+        },
+        onSubmenuHiding: (e) => {
+            console.log('Exiting From: ' + e.rootItem[0].innerText);
+        },
+        onSubmenuShowing: (e) => {
+            console.log("Sub Menu Item: " + e.submenu._userOptions.items[0].name);
+        },
+        onSubmenuShown: (e) => {
+            console.log("Root Element Texte: " + e.rootItem[0].innerText);
+        }
+    })
 })
