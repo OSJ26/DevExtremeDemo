@@ -10,6 +10,9 @@
         paging: {
             enabled: false,
         },
+        selection: {
+            mode: 'multiple'
+        },
         editing: {
             mode: 'row',
             allowUpdating: true,
@@ -118,6 +121,10 @@
         onRowClick: (e) => {
             //console.log(e);
             console.log("Row Clicked");
+            var key = $('#gridContainer').dxDataGrid("instance").getSelectedRowKeys();
+            var data = $('#gridContainer').dxDataGrid("instance").getSelectedRowsData();
+            console.log(data);
+            console.log(key);
         },
     });
 });
