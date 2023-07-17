@@ -112,7 +112,9 @@
     <Content Include="Data\customSummary.js" />
     <Content Include="Data\Data.js" />
     <Content Include="Data\employee.js" />
+    <Content Include="Data\GridEventData.js" />
     <Content Include="Data\masterDetail.js" />
+    <Content Include="Data\reconcileData.js" />
     <Content Include="img\blacks-and-whites-carnival %281%29.png" />
     <Content Include="img\blacks-and-whites-carnival.png" />
     <Content Include="img\carnival.png" />
@@ -132,6 +134,8 @@
     <Content Include="Js\GridManipulate\ManipulateGrid.js" />
     <Content Include="Js\MasterDetail\MasterDetail.js" />
     <Content Include="Js\MasterDetail\MasterWithDataBase.js" />
+    <Content Include="Js\ReconcileDemo\GridEvent.js" />
+    <Content Include="Js\ReconcileDemo\ReconcileDemo.js" />
     <Content Include="Js\RowEditing.js" />
     <Content Include="Js\ScrollAndEdit.js" />
     <Content Include="Js\ToolBar.js" />
@@ -212,6 +216,8 @@
     <Content Include="View\GridManipulate\ManipulateGrid.html" />
     <Content Include="View\MsterDetailView\MasterDetail.html" />
     <Content Include="View\MsterDetailView\MasterWithDB.html" />
+    <Content Include="View\ReconcileDemo\GridEvent.html" />
+    <Content Include="View\ReconcileDemo\ReconcileDemo.html" />
     <Content Include="View\RowEditing.html" />
     <Content Include="View\ToolBarCustomization.html" />
     <Content Include="Web.config" />
