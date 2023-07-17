@@ -15,6 +15,7 @@
         },
         columns: [{
             dataField: "FirstName",
+            isValid: false,
             validationRules: [{
                 type: "required",
                 message: "First Name is required"
@@ -64,7 +65,7 @@
             console.log("Editing canceled by user");
         },
         onEditorPrepared: (e) => {
-            //console.log(e);
+            console.log(e);
             console.log("Editor is prepered for editing");
         },
         onEditorPreparing: () => {

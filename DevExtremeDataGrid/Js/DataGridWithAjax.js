@@ -29,7 +29,7 @@ $(() => {
         columnChooser: {
             enabled: true,
             emptyPanelText: "Let's Hide Some Column",
-            mode: "DragandDrop",
+            mode: "select",
             search: {
                 editorOptions: {
                     placeholder: "Search Column",
@@ -50,6 +50,7 @@ $(() => {
             sortOrdder: 'asc',
             width: "160px",
             alignment: "center",
+            showInColumnChooser: false
         },
         {
             caption: "Personal Details",

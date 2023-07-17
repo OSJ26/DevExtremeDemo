@@ -125,7 +125,7 @@
             //        displayFormat: 'Sum: {0}',
             //        summaryType: 'custom',
             //    },
-            //],
+            ],
             //calculateCustomSummary(options) {
             //    console.log(options);
             //    if (options.name === 'SelectedRowsSummary') {

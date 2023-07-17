@@ -6,6 +6,7 @@
         orientation: 'horizontal',
         width: 400,
         adaptivityEnabled: true,
+        hideSubmenuOnMouseLeave:true,
         showFirstSubmenuMode: {
             name: 'onHover',
             delay: { show: 0, hide: 500 },
