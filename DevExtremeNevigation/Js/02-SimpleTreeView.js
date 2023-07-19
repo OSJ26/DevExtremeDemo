@@ -5,12 +5,18 @@
         collapseIcon: 'collapse',
         expandIcon: 'expand',
         hint: 'Products',
+        //scrollDirection: 'both',
         searchEnabled: true,
-        searchMode: 'startsWith',
+        //searchValue:'Video Players',
+        searchMode: 'contains',
         selectionMode: 'multiple',
-        selectNodesRecursive: true,
+        selectNodesRecursive: true,     
         showCheckBoxesMode: 'selectAll',
-        expandAllEnabled: 'e',
+        selectAllText: 'Check All',
+        expandNodesRecursive: true,
+        elementAttr: {
+            class: 'customize'
+        },
         onItemCollapsed: (e) => {
             console.log("Collepsed Items is: " + e.node.text);
         },
@@ -22,6 +28,9 @@
         },
         onSelectAllValueChanged: (e) => {
             console.log("Select All Value is: "+e.value);
+        },
+        onSelectionChanged: (e) => {
+            console.log("Selection Changed");
         }
     }).dxTreeView("instance");
 })

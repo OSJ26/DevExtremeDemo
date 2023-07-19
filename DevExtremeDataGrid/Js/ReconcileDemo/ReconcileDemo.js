@@ -13,7 +13,7 @@
         columnChooser: {
             enabled: true,
             allowSearch: true,
-            mode: 'select',
+            mode: 'dragAndDrop',
             search: {
                 editorOptions: {
                     placeholder: 'Search column',

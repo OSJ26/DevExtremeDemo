@@ -136,6 +136,7 @@
     <Content Include="Js\MasterDetail\MasterWithDataBase.js" />
     <Content Include="Js\ReconcileDemo\GridEvent.js" />
     <Content Include="Js\ReconcileDemo\ReconcileDemo.js" />
+    <Content Include="Js\ReconcileDemo\remoteOperations.js" />
     <Content Include="Js\RowEditing.js" />
     <Content Include="Js\ScrollAndEdit.js" />
     <Content Include="Js\ToolBar.js" />
@@ -218,6 +219,7 @@
     <Content Include="View\MsterDetailView\MasterWithDB.html" />
     <Content Include="View\ReconcileDemo\GridEvent.html" />
     <Content Include="View\ReconcileDemo\ReconcileDemo.html" />
+    <Content Include="View\ReconcileDemo\remoteOperations.html" />
     <Content Include="View\RowEditing.html" />
     <Content Include="View\ToolBarCustomization.html" />
     <Content Include="Web.config" />
