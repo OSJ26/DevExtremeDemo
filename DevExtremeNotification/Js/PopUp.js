@@ -8,7 +8,7 @@
             columnChooser: {
                 enabled: true,
                 allowSearch: true,
-                mode: 'dragAndDrop',
+                mode: 'select',
                 search: {
                     editorOptions: {
                         placeholder: 'Search column',
@@ -21,10 +21,7 @@
                     selectByClick: true
                 }
             },
-            paging: { enabled: true, pageSize: 10 },
-            filterRow: { visible: true },
             scrolling: { mode: 'virtual' },
-            selection: { mode: 'single' },
             //selectedRowKeys: [value],
             height: '100%',
         });
