@@ -2,17 +2,17 @@
     padding: 10px;
 }
 
-    #container ul {
-        list-style-type: none;
-        text-align: center;
-    }
+#container ul {
+    list-style-type: none;
+    text-align: center;
+}
 
-        #container ul li {
-            display: inline-block;
-            width: 160px;
-            margin: 10px;
-        }
+#container ul li {
+    display: inline-block;
+    width: 160px;
+    margin: 10px;
+}
 
-            #container ul li img {
-                width: 100px;
-            }
+#container ul li img {
+   width: 100px;
+}

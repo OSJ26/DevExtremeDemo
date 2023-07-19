@@ -36,79 +36,78 @@
             //height: '100%',
 
 
-            //toolbar: {
-            //    items: [
-            //        {
-            //            location: 'before',
-            //            widget: 'dxButton',
-            //            options: {
-            //                icon: "showpanel",
-            //                onClick(e) {
-            //                    const expanding = e.component.option("icon") === "showpanel";
-            //                    $('#grid').dxDataGrid("instance").option('grouping.autoExpandAll', expanding);
-            //                    e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
-            //                },
-            //                elementAttr: {
-            //                    class: "button"
-            //                }
-            //            }
-            //        },
+            toolbar: {
+                items: [
+                    {
+                        location: 'before',
+                        widget: 'dxButton',
+                        toolbar: 'bottom',
+                        options: {
+                            icon: "showpanel",
+                            onClick(e) {
+                                const expanding = e.component.option("icon") === "showpanel";
+                                dataGrid.option('grouping.autoExpandAll', expanding);
+                                e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
+                            },
+                            elementAttr: {
+                                class: 'button'
+                            }
+                        }
+                    },
+                    {
+                        location: 'after',
+                        widget: 'dxButton',
+                        toolbar: 'bottom',
+                        options: {
+                            icon: 'clear',
+                            onClick() {
+                                dataGrid.clearGrouping();
+                            },
+                            elementAttr: {
+                                class: 'button'
+                            }
+                        }
+                    },
+                    {
+                        location: 'after',
+                        widget: 'dxButton',
+                        toolbar: 'bottom',
+                        options: {
+                            icon: 'refresh',
+                            name: "myBtn",
+                            onClick() {
+                                dataGrid.refresh();
+                                DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
+                            },
+                            elementAttr: {
+                                class: 'button'
+                            }
+                        }
+                    },
+                    {
+                        location: 'before',
+                        widget: 'dxSelectBox',
+                        options: {
+                            width: 300,
+                            items: [{
+                                value: 'Position',
+                                text: 'Grouping by Position',
+                            }],
+                            displayExpr: 'text',
+                            valueExpr: 'value',
+                            value: 'State',
+                            onValueChanged(e) {
+                                dataGrid.clearGrouping();
+                                dataGrid.columnOption(e.value, 'groupIndex', 0);
+                            },
+                            elementAttr: {
+                                class: 'select'
+                            }
+                        },
 
-            //        {
-            //            location: 'after',
-            //            widget: 'dxButton',
-            //            options: {
-            //                icon: 'clear',
-            //                elementAttr: {
-            //                    class: "button"
-            //                },
-            //                onClick() {
-            //                    $('#grid').dxDataGrid("instance").clearGrouping();
-            //                },
-            //            }
-            //        },
-            //        {
-            //            location: 'after',
-            //            widget: 'dxButton',
-            //            options: {
-            //                icon: 'refresh',
-            //                name: "myBtn",
-            //                onClick() {
-            //                    $('#grid').dxDataGrid("instance").refresh();
-            //                    DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
-            //                },
-            //                elementAttr: {
-            //                    class: "button"
-            //                }
-            //            }
-            //        },
-            //        {
-            //            location: 'before',
-            //            widget: 'dxSelectBox',
-            //            options: {
-            //                width: 300,
-            //                items: [{
-            //                    value: 'Position',
-            //                    text: 'Grouping by Position',
-            //                }, {
-            //                    value: 'Designation',
-            //                    text: 'Grouping by Designation',
-            //                }],
-            //                displayExpr: 'text',
-            //                valueExpr: 'value',
-            //                value: 'State',
-            //                onValueChanged(e) {
-            //                    $('#grid').dxDataGrid("instance").clearGrouping();
-            //                    $('#grid').dxDataGrid("instance").columnOption(e.value, 'groupIndex', 0);
-            //                },
-            //                elementAttr: {
-            //                    class: "select"
-            //                }
-            //            },
-
-            //        },
-            //    ],
-            //}
+                    },
+                ],
+            }
         });
 
         dataGrid = $dataGrid.dxDataGrid('instance');
@@ -198,7 +197,7 @@
                                 at: 'center top',
                             },
                         }, 'success', 3000);
-                    },
+                    }
                 },
             }, {
                 widget: 'dxButton',
@@ -208,7 +207,7 @@
                     text: 'Close',
                     onClick() {
                         popup.hide();
-                    },
+                    }
                 }
             }
         ]
