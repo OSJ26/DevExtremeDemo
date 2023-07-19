@@ -5,6 +5,16 @@
         const $dataGrid = $('<div>').dxDataGrid({
             dataSource: employees,
             hoverStateEnabled: true,
+            showRowLines: true,
+            showColumnLines: true,
+            showBorders: true,
+            rowAlternationEnabled: true,
+            groupPanel: {
+                visible: true
+            },
+            editing: {
+                allowUpdating: true,
+            },
             columnChooser: {
                 enabled: true,
                 allowSearch: true,
@@ -23,7 +33,82 @@
             },
             scrolling: { mode: 'virtual' },
             //selectedRowKeys: [value],
-            height: '100%',
+            //height: '100%',
+
+
+            //toolbar: {
+            //    items: [
+            //        {
+            //            location: 'before',
+            //            widget: 'dxButton',
+            //            options: {
+            //                icon: "showpanel",
+            //                onClick(e) {
+            //                    const expanding = e.component.option("icon") === "showpanel";
+            //                    $('#grid').dxDataGrid("instance").option('grouping.autoExpandAll', expanding);
+            //                    e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
+            //                },
+            //                elementAttr: {
+            //                    class: "button"
+            //                }
+            //            }
+            //        },
+
+            //        {
+            //            location: 'after',
+            //            widget: 'dxButton',
+            //            options: {
+            //                icon: 'clear',
+            //                elementAttr: {
+            //                    class: "button"
+            //                },
+            //                onClick() {
+            //                    $('#grid').dxDataGrid("instance").clearGrouping();
+            //                },
+            //            }
+            //        },
+            //        {
+            //            location: 'after',
+            //            widget: 'dxButton',
+            //            options: {
+            //                icon: 'refresh',
+            //                name: "myBtn",
+            //                onClick() {
+            //                    $('#grid').dxDataGrid("instance").refresh();
+            //                    DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
+            //                },
+            //                elementAttr: {
+            //                    class: "button"
+            //                }
+            //            }
+            //        },
+            //        {
+            //            location: 'before',
+            //            widget: 'dxSelectBox',
+            //            options: {
+            //                width: 300,
+            //                items: [{
+            //                    value: 'Position',
+            //                    text: 'Grouping by Position',
+            //                }, {
+            //                    value: 'Designation',
+            //                    text: 'Grouping by Designation',
+            //                }],
+            //                displayExpr: 'text',
+            //                valueExpr: 'value',
+            //                value: 'State',
+            //                onValueChanged(e) {
+            //                    $('#grid').dxDataGrid("instance").clearGrouping();
+            //                    $('#grid').dxDataGrid("instance").columnOption(e.value, 'groupIndex', 0);
+            //                },
+            //                elementAttr: {
+            //                    class: "select"
+            //                }
+            //            },
+
+            //        },
+            //    ],
+            //}
         });
 
         dataGrid = $dataGrid.dxDataGrid('instance');
