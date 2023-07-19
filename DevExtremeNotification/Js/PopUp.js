@@ -1,14 +1,48 @@
 ﻿$(() => {
-    const popUpTemplate = () => {
-        return $("<div>").append(
-            $(`<p>Full Name: <span>${employee.FirstName}</span>
-                         <span>${employee.LastName}</span></p>`),
-            $(`<p>Birth Date: <span>${employee.BirthDate}</span></p>`),
-            $(`<p>Address: <span>${employee.Address}</span></p>`),
-            $(`<p>Hire Date: <span>${employee.HireDate}</span></p>`),
-            $(`<p>Position: <span>${employee.Position}</span></p>`),
-        );
+    const popUpTemplate = (e) => {
+
+        //const value = e.component.option('value');
+        const $dataGrid = $('<div>').dxDataGrid({
+            dataSource: employees,
+            hoverStateEnabled: true,
+            columnChooser: {
+                enabled: true,
+                allowSearch: true,
+                mode: 'dragAndDrop',
+                search: {
+                    editorOptions: {
+                        placeholder: 'Search column',
+                        mode: 'text'
+                    },
+                },
+                selection: {
+                    recusive: true,
+                    allowSelectAll: true,
+                    selectByClick: true
+                }
+            },
+            paging: { enabled: true, pageSize: 10 },
+            filterRow: { visible: true },
+            scrolling: { mode: 'virtual' },
+            selection: { mode: 'single' },
+            //selectedRowKeys: [value],
+            height: '100%',
+        });
+
+        dataGrid = $dataGrid.dxDataGrid('instance');
+
+        return $dataGrid;
+
+        //return $("<div>").append(
+        //    $(`<p>Full Name: <span>${employee.FirstName}</span>
+        //                 <span>${employee.LastName}</span></p>`),
+        //    $(`<p>Birth Date: <span>${employee.BirthDate}</span></p>`),
+        //    $(`<p>Address: <span>${employee.Address}</span></p>`),
+        //    $(`<p>Hire Date: <span>${employee.HireDate}</span></p>`),
+        //    $(`<p>Position: <span>${employee.Position}</span></p>`),
+        //);
     };
+
 
     const popup = $('#popup').dxPopup({
         contentTemplate: popUpTemplate,
@@ -47,25 +81,25 @@
             }
         },
         toolbarItems: [
-            {
-                locateInMenu: 'always',
-                widget: 'dxButton',
-                toolbar: 'top',
-                options: {
-                    text: 'More Info',
-                    onClick() {
-                        const message = `More info about ${employee.FirstName} ${employee.LastName}`;
+            //{
+            //    locateInMenu: 'always',
+            //    widget: 'dxButton',
+            //    toolbar: 'top',
+            //    options: {
+            //        text: 'More Info',
+            //        onClick() {
+            //            const message = `More info about ${employee.FirstName} ${employee.LastName}`;
 
-                        DevExpress.ui.notify({
-                            message,
-                            position: {
-                                my: 'center top',
-                                at: 'center top',
-                            },
-                        }, 'success', 3000);
-                    }
-                }
-            },
+            //            DevExpress.ui.notify({
+            //                message,
+            //                position: {
+            //                    my: 'center top',
+            //                    at: 'center top',
+            //                },
+            //            }, 'success', 3000);
+            //        }
+            //    }
+            //},
             {
                 widget: 'dxButton',
                 toolbar: 'bottom',

@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Css\StyleSheet.css" />
+    <Content Include="Data\data.js" />
     <Content Include="Data\LoadPanelData.js" />
     <Content Include="Data\PopupData.js" />
     <Content Include="Js\LoadIndicator.js" />
