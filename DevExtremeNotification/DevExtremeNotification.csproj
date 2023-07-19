@@ -67,12 +67,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\StyleSheet.css" />
     <Content Include="Data\LoadPanelData.js" />
+    <Content Include="Data\PopupData.js" />
     <Content Include="Js\LoadPanel.js" />
     <Content Include="Js\PopOver.js" />
+    <Content Include="Js\PopUp.js" />
+    <Content Include="Js\Toast.js" />
+    <Content Include="Other\image.jpg" />
     <Content Include="Other\loading.gif" />
     <Content Include="View\LoadPanel.html" />
     <Content Include="View\PopOver.html" />
+    <Content Include="View\PopUp.html" />
+    <Content Include="View\Toast.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
