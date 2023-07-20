@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Basic DataGrid</title>
+    
+    <!--DevExtreme Theme-->
+    <link href="../Content/dx.material.blue.light.compact.css" rel="stylesheet" />
+    
+    <!--jQuery Min Link-->
+    <script src="../Scripts/jquery-3.5.1.min.js"></script>
+    
+    <!--DevExtreme Link-->
+    <script src="../Scripts/dx.all.js"></script>
+
+    <script src="../Data/DataGridWithArrayStore.js"></script>
+
+    <style>
+        .button {
+            background-color: rgba(103, 171, 255, 0.6);
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            font-size: 8px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-bottom: 100px;
+            margin-top: 5px;
+        }
+        .select {
+            width: 650px;
+            height: 30px;
+            border-radius: 10px;
+            border-bottom: 0px !important;
+            margin-left: 50px;
+            background-color: transparent;
+            margin-bottom: 100px;
+            margin-top: 5px;
+        }
+
+        .dx-texteditor::after {
+            display: none;
+        }
+        
+        .summary{
+            font-size: 12px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="basicGrid"></div>
+    </div>
+    <script src="../Js/DataGridBaiscFunctionality.js"></script>
+</body>
+</html>

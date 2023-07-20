@@ -19,6 +19,8 @@ $(() => {
                             allowFiltering: false,
                             allowGrouping: false,
                             cellTemplate: (containor, option) => {
+                                console.log(containor);
+                                console.log(option);
                                 $("<div>").append($("<img>", { src: option.value })).appendTo(containor);
                             }
                         },

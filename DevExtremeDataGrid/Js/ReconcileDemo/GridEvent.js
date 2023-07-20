@@ -14,7 +14,7 @@
             mode: 'multiple'
         },
         editing: {
-            mode: 'row',
+            mode: 'batch',
             allowUpdating: true,
             allowDeleting: true,
             allowAdding: true,
@@ -47,11 +47,11 @@
             console.log('EditingStart');
         },
         onInitNewRow(e) {
-            //console.log(e); //component,element,data{emplty}
+            console.log(e); //component,element,data{emplty}
             console.log('InitNewRow');
         },
         onRowInserting(e) {
-            //console.log(e); //getting data
+            //console.log(e); //getting data with cancel flag
             console.log('RowInserting');
         },
         onRowInserted(e) {
@@ -67,7 +67,7 @@
             console.log('RowUpdated');
         },
         onRowRemoving(e) {
-            //console.log(e); //removed row data
+            console.log(e); //removed row data
             console.log('RowRemoving');
         },
         onRowRemoved(e) {
@@ -79,7 +79,11 @@
             console.log('Saving');
         },
         onSaved(e) {
-            //console.log(e); //cahnges array
+            var component = e.component;
+            var columnOptions = component.columnOption;
+            var dataSource = component.getDataSource();
+            console.log(columnOptions);
+            console.log(dataSource._items); //cahnges array
             console.log('Saved');
         },
         onEditCanceling(e) {

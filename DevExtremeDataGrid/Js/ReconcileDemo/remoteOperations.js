@@ -34,8 +34,6 @@
                         sort: result.sort,
                         filter: result.filter,
                         totalCount: result.totalCount,
-                        summary: result.summary,
-                        groupCount: result.groupCount,  
                     })
                 },
                 error: () => {
