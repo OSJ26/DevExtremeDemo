@@ -109,7 +109,10 @@
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Data\DataGridWithArrayStore.js" />
+    <Content Include="Data\dataSourceOperation.js" />
     <Content Include="Js\DataGridBaiscFunctionality.js" />
+    <Content Include="Js\GridWithCustomStore.js" />
+    <Content Include="Other\loading.gif" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
@@ -171,7 +174,9 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="css\style.css" />
     <Content Include="View\DataGridBasicFunctionality.html" />
+    <Content Include="View\GridWithCustomStore.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

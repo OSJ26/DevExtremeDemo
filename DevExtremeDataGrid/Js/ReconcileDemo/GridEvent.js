@@ -75,7 +75,7 @@
             console.log('RowRemoved');
         },
         onSaving(e) {
-            //console.log(e); //cahnges and promise, cancel
+            console.log(e); //cahnges and promise, cancel
             console.log('Saving');
         },
         onSaved(e) {

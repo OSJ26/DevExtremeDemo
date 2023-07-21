@@ -1,0 +1,29 @@
+﻿.button {
+        background-color: #03a9f4;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.select {
+    width: 650px;
+    height: 30px;
+    border-radius: 10px;
+    border-bottom: 0px !important;
+    background-color: transparent;
+}
+
+.dx-texteditor::after {
+    display: none;
+}
+
+.dx-texteditor::before {
+    display: none;
+}
+
+.summary {
+    font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
