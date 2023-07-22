@@ -5,20 +5,22 @@
         collapseIcon: 'collapse',
         expandIcon: 'expand',
         hint: 'Products',
+        disabledExpr: 'val',
         //scrollDirection: 'both',
         searchEnabled: true,
         //searchValue:'Video Players',
         searchMode: 'contains',
         selectionMode: 'multiple',
-        selectNodesRecursive: true,     
+        selectNodesRecursive: false,     
         showCheckBoxesMode: 'selectAll',
         selectAllText: 'Check All',
+        virtualModeEnabled: true,
         expandNodesRecursive: true,
         elementAttr: {
             class: 'customize'
         },
         onItemCollapsed: (e) => {
-            console.log("Collepsed Items is: " + e.node.text);
+            console.log(e.node);
         },
         onItemExpanded: (e) => {
             console.log("Expanded Items is: " + e.node.text);

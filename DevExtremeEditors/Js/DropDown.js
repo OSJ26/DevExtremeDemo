@@ -3,6 +3,21 @@
     const fruits = ["Apples", "Oranges", "Lemons", "Pears", "Pineapples"];
     const dataSource = fruits;
 
+    const data = [
+        {
+            id: 1,
+            name: "Om Joshi"
+        },
+        {
+            id: 2,
+            name: "Kishan Kakdiya"
+        },
+        {
+            id: 3,
+            name: "Shivam Nanda"
+        }
+    ]
+
     const arrayStore = new DevExpress.data.ArrayStore({
         data: [
             {
@@ -20,12 +35,13 @@
         ]
     })
 
-    $("#simpleDrop").dxDropDownBox({
+    const drop = $("#simpleDrop").dxDropDownBox({
         accessKey: "s",
         acceptCustomValue: true,
         contentTemplate : (e) => {
             const $list = $("<div>").dxList({
-                dataSource,
+                items: data,
+                displayExpr:'name',
                 allowItemDeleting: true,
                 onItemDeleting: function (e) {
                     if (dataSource.length === 1) {
@@ -38,19 +54,21 @@
         },
         selectionMode: "multiple",
         inputAttr: {
-            id : "simpleDrop"
+            id: "simpleDrop"
         },
         elementAttr: {
             id: "simpleDrop",
             class: "drop"
         },
         openOnFieldClick: false,
-        onEnterKey: (e) => {
-            dataSource.push(e.component.option("value"));
-            e.component.option("value", "");
-            myList.reload();
-        },
-    })
+        //onEnterKey: (e) => {
+        //    dataSource.push(e.component.option("value"));
+        //    e.component.option("value", "");
+        //    myList.reload();
+        //},
+    }).dxDropDownBox('instance');
+
+    console.log(drop);
 
     //const employeeList = (jsonData) => {
     //    return new DevExpress.data.CustomStore({

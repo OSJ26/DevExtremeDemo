@@ -83,14 +83,14 @@
                 column: 'SaleAmount',
                 summaryType: 'max',
                 valueFormat: 'currency',
-                //showInGroupFooter: false,
+                showInGroupFooter: true,
                 alignByColumn: true,
             },
             {
                 column: 'TotalAmount',
                 summaryType: 'max',
                 valueFormat: 'currency',
-                //showInGroupFooter: false,
+                showInGroupFooter: true,
                 alignByColumn: true,
             }]
         },

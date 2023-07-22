@@ -110,6 +110,7 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Data\01-data.js" />
     <Content Include="Data\02-Data.js" />
+    <Content Include="Data\employeeData.js" />
     <Content Include="img\19.png" />
     <Content Include="img\21.png" />
     <Content Include="img\monitor.png" />

@@ -1,11 +1,14 @@
 ﻿const menuData = [{
     id: '1',
     name: 'Video Players',
+    accessKey:'k',
     items: [{
         id: '1_1',
         name: 'HD Video Player',
         icon: '../img/video.png',
         price: 220,
+        val: 'selected',
+        accessKey: 'f',
     }, {
         id: '1_2',
         name: 'SuperHD Video Player',

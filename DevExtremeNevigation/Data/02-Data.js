@@ -12,6 +12,7 @@
                 text: 'HD Video Player',
                 price: 220,
                 image: 'images/products/1.png',
+                val: 'disabled'
             }, {
                 id: '1_1_1_2',
                 text: 'SuperHD Video Player',

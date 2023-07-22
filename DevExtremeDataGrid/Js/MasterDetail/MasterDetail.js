@@ -9,6 +9,12 @@
                 width: 20
             },'Prefix','FirstName', 'LastName', 'Position','State'
         ],
+        onRowPrepared: (e) => {
+            console.log(e);
+        },
+        onRowClick: (e) => {
+            console.log(e);
+        },
         masterDetail: {
             enabled: true,
             template(containor, options) {
@@ -31,7 +37,7 @@
                             calculateCellValue(rowData) {
                                 return rowData.Status === 'Completed';
                             },
-                        }
+                        },'dummy'
                     ],
                     dataSource: new DevExpress.data.DataSource({
                         store: new DevExpress.data.ArrayStore({
