@@ -60,7 +60,16 @@ $(() => {
         headerFilter: {
             visible: true,
         },
-
+        groupPanel: {
+            visible: true,
+        },
+        searchPanel: {
+            visible: true,
+            placeholder: 'Search Here',
+            highlightSearchText: true,
+            highlightCaseSensitive: false,
+            width: 300
+        },
         filterRow: {
             visible: true,
             resetOperationText: 'ResetMe'
@@ -120,7 +129,7 @@ $(() => {
             {
                 dataField: 'date',
                 caption: 'Date',
-                dataType: 'date',
+                dataType: 'datetime',
                 alignment: 'center',
                 validationRules: [{ type: 'required' }],
             },
