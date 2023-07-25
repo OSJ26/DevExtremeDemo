@@ -42,9 +42,11 @@
 		message: 'Indicator Demo',
 		onShowing(e) {
 			console.log('Showing Method is Called');
+			console.log(e);
 		},
-		onShown() {
+		onShown(e) {
 			console.log('Shown Method is InProgress');
+			console.log(e);
 			setTimeout(() => {
 				loadPanel.hide();
 			}, 3000);

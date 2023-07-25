@@ -139,6 +139,12 @@
             my: 'center',
             collision: 'fit'
         },
+        onInitialized: (e) => {
+            console.log(e);
+        },
+        onShowing: (e) => {
+            console.log(e); 
+        },
         animation: {
             show: {
                 type: 'slide',

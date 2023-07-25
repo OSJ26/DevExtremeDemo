@@ -82,26 +82,19 @@
 
     $("#groupDrop").dxDropDownBox({
         contentTemplate: (e) => {
-            $("<div>").dxList({
+            var list  = $("<div>").dxList({
                 dataSource: employee,
                 height: '100%',
-
                 grouped: true,
+                displayExpr: 'name',
                 collapsibleGroups: true,
                 groupTemplate(data) {
+                    console.log(data);
                     return $(`<div>Assigned: ${data.key}</div>`);
                 },
-                selectionMode: "multiple",
-                displayExpr: "item"
-
-                //dataSource: employees,
-                //height: '100%',
-                //grouped: true,
-                //collapsibleGroups: true,
-                //groupTemplate(data) {
-                //    return $(`<div>Assigned: ${data.key}</div>`);
-                //},
             });
+            var listInstance = list.dxList('instance');
+            return list;
             console.log(employee);
         },
     })
