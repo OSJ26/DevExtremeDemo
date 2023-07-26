@@ -3,7 +3,10 @@
 
     $('#small-indicator').dxLoadIndicator({
         height: 20,
-        width: 20
+        width: 20,
+        onInitialized: (e) => {
+            console.log(e);
+        }
     });
 
     $('#medium-indicator').dxLoadIndicator({
@@ -19,7 +22,11 @@
     $('#image-indicator').dxLoadIndicator({
         height: 160,
         width: 160,
-        indicatorSrc: '../Other/loading.gif'
+        indicatorSrc: '../Other/loading.gif',
+        
+        onOptionChanged: (e) => {
+            console.log(e);
+        }
     });
 
     $('#button').dxButton({

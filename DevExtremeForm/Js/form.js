@@ -11,33 +11,37 @@
         return d.promise();
     }
 
-    $('#form').on('submit', (e) => {
-        e.preventDefault();
-        DevExpress.ui.notify({
-            message: 'You have submitted the form',
-            position: {
-                my: 'center top',
-                at: 'center top',
-            },
-        }, 'success', 3000);
+    //$('#form').on('submit', (e) => {
+    //    e.preventDefault();
+    //    DevExpress.ui.notify({
+    //        message: 'You have submitted the form',
+    //        position: {
+    //            my: 'center top',
+    //            at: 'center top',
+    //        },
+    //    }, 'success', 3000);
 
-    });
+    //});
 
     $("#dxName").dxTextBox();
-    const name = $('#dxName').dxTextBox({
-            accessKey: "n",
-            activeStateEnabled: true,
-            focusStateEnabled: true,
-            label: "UserName",
-            labelMode: "floating",
-            inputAttr: { 'aria-label': 'Name' },
-            stylingMode: "outlined",
-            hint: "UserName",
-            maxLength: 30,
-            mode: "text",
-            width: "500px",
+    $('#dxName').dxTextBox({
+        accessKey: "n",
+        activeStateEnabled: true,
+        focusStateEnabled: true,
+        label: "UserName",
+        labelMode: "floating",
+        inputAttr: { 'aria-label': 'Name' },
+        stylingMode: "outlined",
+        hint: "UserName",
+        maxLength: 30,
+        mode: "text",
+        width: "500px",
 
-    }).dxTextBox("instance");
+    }).dxValidator({
+        rule: 'required',
+        message: 'Name is Required'
+    });
+    const name = $("#dxName").dxTextBox('instance');
 
     $('#dxPassword').dxTextBox();
     const password = $('#dxPassword').dxTextBox("instance");
@@ -196,6 +200,7 @@
         }]
     })
 
+
     $("#dxCity").dxTextBox({
         label: "City",
         labelMode: "floating",
@@ -219,7 +224,8 @@
             message: "City must contain 3 character"
         }
         ]
-    })
+    });
+    const city = $("#dxCity").dxTextBox("instance");
 
     $("#dxEmail").dxTextBox();
     const email = $("#dxEmail").dxTextBox("instance");
@@ -236,8 +242,8 @@
                 email.option("validationStatus", "invalid");
             }
         },
-        width: "500px"
-
+        width: "500px",
+        validataionMessageMode: 'auto'
     }).dxValidator({
         validationRules: [{
             type: "required",
@@ -310,7 +316,33 @@
         text: "Register",
         width: "200px",
         type: "default",
-        useSubmitBehavior: true
+        useSubmitBehavior: true,
+
+        onClick: (e) => {
+            const data = {
+                name: name.option("value"),
+                email: email.option("value"),
+                password: password.option("value"),
+                cnfpassword: cnfPassword.option("value"),
+                address: myAddress.option("value"),
+                country: country.option("value"),
+                city: city.option("value"),
+                birthdate: myDate.option("value")
+            }
+            console.log(data);
+            return $.ajax({
+                URL: 'https://localhost:7125/api/User',
+                data: data,
+                type: "POST",
+                success: () => {
+                    DevExpress.ui.notify("Register Successfully", 'success', 1000);
+                },
+                error: () => {
+
+                    DevExpress.ui.notify("Something went wrong", 'error', 1000);
+                }
+            })
+        }
     }).dxButton("instance");
 
     $("#dxResetButton").dxButton({

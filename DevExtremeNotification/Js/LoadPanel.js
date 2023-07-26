@@ -31,6 +31,7 @@
 				to: 0
 			}
 		},
+		container: $('#employee'),
 		shadingColor: 'rgb(0,0,0,0.5)',
 		position: { of: '#containor' },
 		visible: false,

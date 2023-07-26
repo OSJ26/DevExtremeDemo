@@ -241,4 +241,8 @@ $(() => {
             ],
         }
     }).dxDataGrid('instance');
+
+    var state = grid.state();
+    console.log(state);
+    //grid.beginCustomLoading("Data Loading..");
 })

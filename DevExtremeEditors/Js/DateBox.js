@@ -14,7 +14,8 @@
         disabledDates: [
             new Date("07/20/2023"),
             new Date("07/21/2023"),
-            new Date("06/30/2023")
+            new Date("06/30/2023"),
+            new Date("07/27/2023")
         ],
         useMaskedBehaviour: true,
         displayFormat: "dd:MM:yyy",
