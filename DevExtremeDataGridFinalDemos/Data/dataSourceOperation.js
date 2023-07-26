@@ -3,7 +3,6 @@
 export const loadData = new DevExpress.data.CustomStore({
     key: 'id',
     load: (e) => {
-        console.log(e);
         var d = new $.Deferred();
         return $.ajax({
             type: "GET",

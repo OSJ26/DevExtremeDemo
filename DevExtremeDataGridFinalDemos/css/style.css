@@ -27,3 +27,17 @@
     font-size: 12px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.updatingState{
+    border: 2px black dotted;
+    background-color : aqua;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 20px;
+    width: 200px;
+    border-radius: 20px;
+    height: auto;
+}

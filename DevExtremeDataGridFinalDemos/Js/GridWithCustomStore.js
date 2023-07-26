@@ -18,8 +18,8 @@ $(() => {
         position: { of: '#containor' },
         visible: false,
         shading: true,
-        height: 140,
-        width: 140,
+        height: 100,
+        width: 200,
         hideOnOutsideClick: true,
         showIndicator: true,
         showPane: true,
@@ -27,6 +27,7 @@ $(() => {
         message: 'Loading',
     }).dxLoadPanel('instance');
 
+    var event;
     const grid = $('#gridFunction').dxDataGrid({
         dataSource: loadData,
         showBorder: true,
@@ -63,6 +64,11 @@ $(() => {
         groupPanel: {
             visible: true,
         },
+        loadPanel: {
+            enabled: false,
+            indicatorSrc: '../Other/loading.gif',
+            text:'Data Loading..'
+        },
         searchPanel: {
             visible: true,
             placeholder: 'Search Here',
@@ -78,16 +84,37 @@ $(() => {
             visible: true,
         },
         repaintChangesOnly: true,
-        onSaving(e) {
-            loadPanel.show();
-        },
-        onSaved() {
-            setTimeout(() => {
-                loadPanel.hide();
-            }, 3000);
-        },
         selection: {
-            mode: 'multiple'
+            mode: 'single'
+        },
+        onSelectionChanged: (e) => {
+            const data = e.selectedRowsData;
+            if (data) {
+                $("#selectedDetails").addClass("card");
+                $("#source").text("Source: " + data[0].source);
+                $("#destination").text("Destination: " + data[0].destination);
+                $("#price").text("Price: " + data[0].price);
+                $("#date").text("Date: " + data[0].date);
+                $("#passanger").text("Passanger: " + data[0].max_passanger  );
+            }
+        },
+        onRowPrepared: (e) =>{
+            if (e.rowType == 'header') {
+                e.rowElement[0].bgColor = "#BEDFE6";
+            }
+        },
+        onInitNewRow: (e) => {
+            console.log(e);
+        },
+        onRowRemoved: (e) => {
+            $("#removedRow").addClass("card");
+            $("#title").text("Removed Row");
+            $("#key").text("Id: " + e.data.id);
+            $("#source1").text("Source: " + e.data.source);
+            $("#destination1").text("Destination: " + e.data.destination);
+            $("#price1").text("Price: " + e.data.price);
+            $("#date1").text("Date: " + e.data.date);
+            $("#passanger1").text("Passanger: " + e.data.max_passanger);
         },
         columns: [
             {
@@ -242,7 +269,29 @@ $(() => {
         }
     }).dxDataGrid('instance');
 
-    var state = grid.state();
-    console.log(state);
+    grid.on("saving", () => {
+        loadPanel.option("delay", 500);
+        loadPanel.option("message", "Data Saving...");
+        loadPanel.show();
+        setTimeout(() => {
+            loadPanel.hide();
+        }, 1000)
+    })
+
+    grid.on("saved", () => {
+        loadPanel.option("delay", 1500);
+        loadPanel.option("message", "Data Saved...");
+        loadPanel.show();
+        setTimeout(() => {
+            loadPanel.hide();
+        },1000)
+    })
+    grid.on("rowUpdated", (e) => {
+        const key = e.key;
+        const index = grid.getRowIndexByKey(key);
+        const row = grid.getRowElement(index);
+        row.addClass('updatingState');
+    })
+
     //grid.beginCustomLoading("Data Loading..");
 })
