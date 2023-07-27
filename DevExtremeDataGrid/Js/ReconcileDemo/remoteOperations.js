@@ -33,6 +33,9 @@
                     deferred.resolve(result.data, {
                         sort: result.sort,
                         filter: result.filter,
+                        totalSummary: result.totalSummary,
+                        summary: result.summary,
+                        groupSummary: result.groupSummary,
                         totalCount: result.totalCount,
                         groupCount: result.groupCount
                     })
@@ -121,7 +124,7 @@
             dataField: 'StoreState',
             dataType: 'string',
         }, {
-            dataField: 'Employee',  
+            dataField: 'Employee',
             dataType: 'string',
         }, {
             dataField: 'SaleAmount',
@@ -131,10 +134,24 @@
             allowHeaderFiltering: false
         }],
         summary: {
+            totalItems: [
+                {
+                    column: 'SaleAmount',
+                    summaryType: 'sum',
+                    displayFormat: 'Total Amount : {0}',
+                },
+            ],
             groupItems: [{
                 column: 'StoreState',
                 summaryType: 'count'
-            }]
+            },
+            {
+                column: 'SaleAmount',
+                summaryType: 'sum',
+                displayFormat: 'Total Amount : {0}',
+            },
+            ],
+
         },
 
     }).dxDataGrid("instance");
