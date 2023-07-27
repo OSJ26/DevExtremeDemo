@@ -1,35 +1,7 @@
-﻿import { loadData } from '../Data/dataSourceOperation.js';
+﻿import data from '../Data/dataOperation.js';
 $(() => {
-
-    const loadPanel = $('#loadPanel').dxLoadPanel({
-        animation: {
-            show: {
-                type: 'fade',
-                from: 0,
-                to: 1
-            },
-            hide: {
-                type: 'fade',
-                from: 1,
-                to: 0
-            }
-        },
-        shadingColor: 'rgb(0,0,0,0.5)',
-        position: { of: '#containor' },
-        visible: false,
-        shading: true,
-        height: 100,
-        width: 200,
-        hideOnOutsideClick: true,
-        showIndicator: true,
-        showPane: true,
-        indicatorSrc: '../Other/loading.gif',
-        message: 'Loading',
-    });
-
-    var event;
-    const grid = $('#gridFunction').dxDataGrid({
-        dataSource: loadData,
+    $("#grid").dxDataGrid({
+        dataSource: data,
         showBorder: true,
         showColumnLines: true,
         showRowLines: true,
@@ -267,32 +239,5 @@ $(() => {
                 },
             ],
         }
-    }).dxDataGrid('instance');
-
-    grid.on("saving", () => {
-        loadPanel.option("delay", 500);
-        loadPanel.option("message", "Data Saving...");
-        loadPanel.show();
-        setTimeout(() => {
-            loadPanel.hide();
-        }, 1000)
-    })
-
-    grid.on("saved", () => {
-        loadPanel.option("delay", 1500);
-        loadPanel.option("message", "Data Saved...");
-        loadPanel.show();
-        setTimeout(() => {
-            loadPanel.hide();
-        }, 1000)
-    })
-    grid.on("rowUpdated", (e) => {
-        const key = e.key;
-        const index = grid.getRowIndexByKey(key);
-        const row = grid.getRowElement(index);
-        row.addClass('updatingState');
-    })
-
-    //grid.beginCustomLoading("Data Loading..");
-    //export default loadPanel;
-});
+    }).dxDataGrid("instance");
+})

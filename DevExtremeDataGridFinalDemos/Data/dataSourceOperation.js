@@ -1,8 +1,13 @@
-﻿const url = 'https://localhost:44383/api/OneWay';
+﻿//import * as loadPanel from '../Js/GridWithCustomStore.js';
+const url = 'https://localhost:44383/api/OneWay';
+
+//loadPanel = new DevExpress.ui.dxLoadPanel();
 
 export const loadData = new DevExpress.data.CustomStore({
     key: 'id',
     load: (e) => {
+        console.log(e);
+        //loadPanel.show();
         var d = new $.Deferred();
         return $.ajax({
             type: "GET",
