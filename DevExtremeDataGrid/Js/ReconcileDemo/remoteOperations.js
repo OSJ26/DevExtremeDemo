@@ -34,6 +34,7 @@
                         sort: result.sort,
                         filter: result.filter,
                         totalCount: result.totalCount,
+                        groupCount: result.groupCount
                     })
                 },
                 error: () => {
@@ -54,7 +55,13 @@
         showColumnLines: true,
         showRowLines: true,
         rowAlternationEnabled: true,
-        remoteOperations: true,
+        remoteOperations: {
+            filtering: true,
+            grouping: true,
+            paging: true,
+            sorting: true,
+            summary: true
+        },
         columnChooser: {
             enabled: true,
             allowSearch: true,
@@ -72,7 +79,7 @@
             }
         },
         paging: {
-            pageSize: 5,
+            pageSize: 10,
         },
         pager: {
             showPageSizeSelector: true,
@@ -114,7 +121,7 @@
             dataField: 'StoreState',
             dataType: 'string',
         }, {
-            dataField: 'Employee',
+            dataField: 'Employee',  
             dataType: 'string',
         }, {
             dataField: 'SaleAmount',
@@ -123,6 +130,12 @@
             format: 'currency',
             allowHeaderFiltering: false
         }],
+        summary: {
+            groupItems: [{
+                column: 'StoreState',
+                summaryType: 'count'
+            }]
+        },
 
     }).dxDataGrid("instance");
 })

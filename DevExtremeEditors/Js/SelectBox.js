@@ -20,7 +20,7 @@
 
     $("#dxSelectBox").dxSelectBox({
 
-        items: carDataSource,
+        dataSource: carDataSource,
         placeholder: "Choose Car",
         showClearButton: true,
         showSelectionControls : true,
