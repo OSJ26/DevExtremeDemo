@@ -74,7 +74,7 @@ $(() => {
             placeholder: 'Search Here',
             highlightSearchText: true,
             highlightCaseSensitive: false,
-            width: 300
+            width: 200
         },
         filterRow: {
             visible: true,
@@ -99,12 +99,31 @@ $(() => {
             }
         },
         onRowPrepared: (e) => {
+            console.log(e);
             if (e.rowType == 'header') {
-                e.rowElement[0].bgColor = "#BEDFE6";
+                e.rowElement[0].bgColor = "#6c7ba1";
+                $(".dx-header-row").addClass('header');
+            }
+            if (e.rowType == "data") {
+                $(".dx-texteditor-input").addClass("myEditor");
             }
         },
-        onInitNewRow: (e) => {
-            console.log(e);
+        onEditorPrepared: (ele) => {
+            console.log(ele);
+            //$(".dx-texteditor-input").addClass("myEditor");         
+        },
+        onEditorPreparing: (e) => {
+            //console.log(e.component.option("elementAttr", {
+            //    class: 'editor'
+            //}));
+
+            //if (e.row['rowType'] === "data") {
+            //    const val = e.editorOptions.elementAttr = "editor";
+            //    e.setValue();
+            //} 
+        },
+        onRowClick: (cell) => {
+            console.log(cell);
         },
         onRowRemoved: (e) => {
             $("#removedRow").addClass("card");
@@ -115,6 +134,9 @@ $(() => {
             $("#price1").text("Price: " + e.data.price);
             $("#date1").text("Date: " + e.data.date);
             $("#passanger1").text("Passanger: " + e.data.max_passanger);
+        },
+        onUpdated: (e) => {
+            console.log(e);
         },
         columns: [
             {
@@ -156,7 +178,7 @@ $(() => {
             {
                 dataField: 'date',
                 caption: 'Date',
-                dataType: 'datetime',
+                //dataType: 'datetime',
                 alignment: 'center',
                 validationRules: [{ type: 'required' }],
             },
@@ -269,29 +291,29 @@ $(() => {
         }
     }).dxDataGrid('instance');
 
-    grid.on("saving", () => {
-        loadPanel.option("delay", 500);
-        loadPanel.option("message", "Data Saving...");
-        loadPanel.show();
-        setTimeout(() => {
-            loadPanel.hide();
-        }, 1000)
-    })
+    //grid.on("saving", () => {
+    //    loadPanel.option("delay", 500);
+    //    loadPanel.option("message", "Data Saving...");
+    //    loadPanel.show();
+    //    setTimeout(() => {
+    //        loadPanel.hide();
+    //    }, 1000)
+    //})
 
-    grid.on("saved", () => {
-        loadPanel.option("delay", 1500);
-        loadPanel.option("message", "Data Saved...");
-        loadPanel.show();
-        setTimeout(() => {
-            loadPanel.hide();
-        }, 1000)
-    })
-    grid.on("rowUpdated", (e) => {
-        const key = e.key;
-        const index = grid.getRowIndexByKey(key);
-        const row = grid.getRowElement(index);
-        row.addClass('updatingState');
-    })
+    //grid.on("saved", () => {
+    //    loadPanel.option("delay", 1500);
+    //    loadPanel.option("message", "Data Saved...");
+    //    loadPanel.show();
+    //    setTimeout(() => {
+    //        loadPanel.hide();
+    //    }, 1000)
+    //})
+    //grid.on("rowUpdated", (e) => {
+    //    const key = e.key;
+    //    const index = grid.getRowIndexByKey(key);
+    //    const row = grid.getRowElement(index);
+    //    row.addClass('updatingState');
+    //})
 
     //grid.beginCustomLoading("Data Loading..");
     //export default loadPanel;

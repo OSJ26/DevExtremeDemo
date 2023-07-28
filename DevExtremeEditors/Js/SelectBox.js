@@ -23,7 +23,7 @@
         dataSource: carDataSource,
         placeholder: "Choose Car",
         showClearButton: true,
-        showSelectionControls : true,
+        showSelectionControls: true,
         hint: "Cars",
         width: "200px",
         inputAttr: {
@@ -72,23 +72,32 @@
     }
     ]
 
+    async function group(){
+        return await $.ajax({
+            type: 'GET',
+            url: 'https://www.gamerpower.com/api/giveaways?platform=steam&type=loot&sort-by=popularity',
+        })
+    }
+
     const fromUngroupedData = new DevExpress.data.DataSource({
-        store: {
-            type: 'array',
-            data: unGrouped,
-            key: 'ID',
-        },
-        group: 'Category',
+        data: group,
+        key: 'id',
+        //group: 'type',
     });
 
     $("#groupedSelect").dxSelectBox({
-        dataSource: fromUngroupedData,
+        dataSource: new DevExpress.data.DataSource({
+            load: group,
+            key: 'id',
+            type: 'array',
+            group: 'type',
+        }),
         placeholder: "Choose User",
         showClearButton: true,
-        width: "200px",
-        searchEnabled: true,
-        displayExpr: "Name",
+        width: "400px",
+        //searchEnabled: true,
+        displayExpr: "title",
         valueExpr: "id",
-        grouped: true
+        //grouped: true
     })
 })
