@@ -4,10 +4,11 @@ class myLoadPanel {
     constructor(ele) {
         this.element = ele;
         this.setLoadPanel();
+        this.loadPanel;
     }
 
     setLoadPanel() {
-        const loadPanel = new DevExpress.ui.dxLoadPanel($("#loadPanelEle"), {
+        this.loadPanel = new DevExpress.ui.dxLoadPanel($("#loadPanelEle"), {
             animation: {
                 show: {
                     type: 'fade',
@@ -52,7 +53,8 @@ class MyGrid extends myLoadPanel {
     }
 
     setGrid() {
-        this.dataGrid = new DevExpress.ui.dxDataGrid($("#gridOop"), {
+        console.log($("#gridOop"));
+        let dataGrid = $("#gridOop").dxDataGrid( {
             dataSource: loadData,
             showBorder: true,
             showColumnLines: true,
@@ -112,13 +114,22 @@ class MyGrid extends myLoadPanel {
                 mode: 'single'
             },  
             onInitialized: () => {
-                debugger;
                 console.log(this);
                 this.loadPanel.show();
             },
             onContentReady: () => {
                 console.log(this);
-                //this.loadPanel.hide();
+                setTimeout(() => {
+                    this.loadPanel.hide();
+                }, 2000)
+            },
+            onSaving: () => {
+                this.loadPanel.show();
+            },
+            onSaved: () => {
+                setTimeout(() => {
+                    this.loadPanel.hide();
+                },3000)
             },
             columns: [
                 {
@@ -188,6 +199,5 @@ class MyGrid extends myLoadPanel {
 }
 
 const obj = new MyGrid($("#gridOop"));
-//obj.setGrid();
+obj.setGrid();
 //obj.setLoadPanel();
-debugger;
