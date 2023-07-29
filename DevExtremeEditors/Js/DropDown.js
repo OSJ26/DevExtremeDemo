@@ -38,10 +38,10 @@
     const drop = $("#simpleDrop").dxDropDownBox({
         accessKey: "s",
         acceptCustomValue: true,
-        contentTemplate : (e) => {
+        contentTemplate: (e) => {
             const $list = $("<div>").dxList({
                 items: data,
-                displayExpr:'name',
+                displayExpr: 'name',
                 allowItemDeleting: true,
                 onItemDeleting: function (e) {
                     if (dataSource.length === 1) {
@@ -81,18 +81,41 @@
     //}
 
     $("#groupDrop").dxDropDownBox({
+        fieldTemplate: (value, container) => {
+            console.log(value);
+            const result = $("<div>");
+            if (value != undefined) {
+                result.dxTextBox({
+                    value: "Name: " + value?.key + " Task: " + value?.name,
+                    readOnly: true
+                });
+            }
+            else {
+                result.dxTextBox({
+                    value: "",
+                    readOnly: true
+                });
+            }
+            container.append(result);
+        },
         contentTemplate: (e) => {
-            var list  = $("<div>").dxList({
+            var list = $("<div>").dxList({
                 dataSource: employee,
                 height: '100%',
                 grouped: true,
                 displayExpr: 'name',
                 collapsibleGroups: true,
                 groupTemplate(data) {
-                    console.log(data);
+                    //console.log(data);
                     return $(`<div>Assigned: ${data.key}</div>`);
                 },
+                onItemClick: (selected) => {
+                    e.component.option("value", selected.itemData);
+                    console.log(selected);
+                    e.component.close();
+                }
             });
+
             var listInstance = list.dxList('instance');
             return list;
             console.log(employee);
@@ -143,5 +166,5 @@
         onValueChanged: (e) => {
             console.log(e.component._changedValue);
         }
-    })  
+    })
 })
