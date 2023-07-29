@@ -2,7 +2,8 @@
 
 class myLoadPanel {
     constructor(ele) {
-        this.element = ele
+        this.element = ele;
+        this.setLoadPanel();
     }
 
     setLoadPanel() {
@@ -47,7 +48,6 @@ const objLoad = new myLoadPanel($("#loadPanelEle"));
 class MyGrid extends myLoadPanel {
     constructor(element) {
         super();
-        //super.setLoadPanel($("#loadPanelEle"));
         this.element = element;
     }
 
@@ -114,7 +114,7 @@ class MyGrid extends myLoadPanel {
             onInitialized: () => {
                 debugger;
                 console.log(this);
-                //this.loadPanel.show();
+                this.loadPanel.show();
             },
             onContentReady: () => {
                 console.log(this);
@@ -188,6 +188,6 @@ class MyGrid extends myLoadPanel {
 }
 
 const obj = new MyGrid($("#gridOop"));
-obj.setGrid();
+//obj.setGrid();
 //obj.setLoadPanel();
 debugger;
