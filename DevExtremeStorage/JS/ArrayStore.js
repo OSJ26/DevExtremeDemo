@@ -66,6 +66,10 @@
             console.log(e.message);
         },
 
+        onLoaded: (e) => {
+            console.log(e);
+        },
+
         onPush: () => console.log("New data is push in Array Store"),
 
         onInserted: () => console.log("Item Inserted"),

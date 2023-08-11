@@ -20,7 +20,7 @@ function insertData(data) {
         url: url,
         data: data,
         success: (e) => {
-            DevExpress.ui.notify("Data Inserted SUccessfully", "success", 500);
+            DevExpress.ui.notify("Data Inserted SUccessfully", "success", 2000);
         },
         error: (e) => {
             DevExpress.ui.notify("Something went wrong please cehck code!!!", "error", 1000);
@@ -34,7 +34,7 @@ function updateData(key,changes) {
         url: 'https://localhost:44383/api/OneWay/' + key,
         data: changes,
         success: () => {
-            DevExpress.ui.notify("Update Successed", "success", 1000);
+            DevExpress.ui.notify("Update Successed", "success", 2000);
         },
         error: () => {
             DevExpress.ui.notify("Data Not Updated", 'error', 1000);
@@ -47,7 +47,7 @@ function deleteData(key) {
         type: "DELETE",
         url: 'https://localhost:44383/api/DeleteOneWayTour/' + key,
         success: () => {
-            DevExpress.ui.notify("Deleted Successfully", "success", 1000);
+            DevExpress.ui.notify("Deleted Successfully", "success", 2000);
         },
         error: () => {
             DevExpress.ui.notify("Data Not Deleted", 'error', 1000);
