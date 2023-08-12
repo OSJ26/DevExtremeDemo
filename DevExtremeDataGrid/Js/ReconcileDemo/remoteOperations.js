@@ -9,17 +9,8 @@
             const deferred = $.Deferred();
             const args = {};
 
-            [
-                'skip',
-                'take',
-                'requireTotalCount',
-                'requireGroupCount',
-                'sort',
-                'filter',
-                'totalSummary',
-                'group',
-                'groupSummary',
-            ].forEach((i) => {
+            const op = ['skip','take','requireTotalCount','sort','filter','totalSummary','group','groupSummary'];
+            op.forEach((i) => {
                 if (i in loadOptions && isNotEmpty(loadOptions[i])) {
                     args[i] = JSON.stringify(loadOptions[i]);
                 }
@@ -30,6 +21,7 @@
                 dataType: 'json',
                 data: args,
                 success: (result) => {
+                    console.log("Hello");
                     deferred.resolve(result.data, {
                         sort: result.sort,
                         filter: result.filter,
@@ -37,7 +29,6 @@
                         summary: result.summary,
                         groupSummary: result.groupSummary,
                         totalCount: result.totalCount,
-                        groupCount: result.groupCount
                     })
                 },
                 error: () => {
@@ -64,6 +55,9 @@
             paging: true,
             sorting: true,
             summary: true
+        },
+        grouping: {
+            autoExpandAll: false
         },
         columnChooser: {
             enabled: true,

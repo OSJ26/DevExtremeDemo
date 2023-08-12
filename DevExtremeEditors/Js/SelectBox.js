@@ -82,7 +82,7 @@
     const fromUngroupedData = new DevExpress.data.DataSource({
         data: group,
         key: 'id',
-        //group: 'type',
+        group: 'type',
     });
 
     $("#groupedSelect").dxSelectBox({
@@ -92,10 +92,10 @@
             type: 'array',
             group: 'type',
         }),
-        placeholder: "Choose User",
+        placeholder: "Select One..",
         showClearButton: true,
         width: "400px",
-        //searchEnabled: true,
+        searchEnabled: true,
         displayExpr: "title",
         valueExpr: "id",
         //grouped: true

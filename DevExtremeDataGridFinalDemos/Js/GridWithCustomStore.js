@@ -83,11 +83,22 @@ $(() => {
         filterPanel: {
             visible: true,
         },
+        pager: {
+            allowedPageSizes: [5, 10, 15, 20],
+            showInfo: true,
+            showNavigationButtons: true,
+            showPageSizeSelector: true,
+            visible: true
+        },
+        paging: {
+            pageSize:5
+        },
         repaintChangesOnly: true,
         selection: {
             mode: 'single'
         },
         onSelectionChanged: (e) => {
+            //console.log(e.component.getDataSource());
             const data = e.selectedRowsData;
             if (data) {
                 $("#selectedDetails").addClass("card");
@@ -107,23 +118,6 @@ $(() => {
             if (e.rowType == "data") {
                 $(".dx-texteditor-input").addClass("myEditor");
             }
-        },
-        onEditorPrepared: (ele) => {
-            console.log(ele);
-            //$(".dx-texteditor-input").addClass("myEditor");         
-        },
-        onEditorPreparing: (e) => {
-            //console.log(e.component.option("elementAttr", {
-            //    class: 'editor'
-            //}));
-
-            //if (e.row['rowType'] === "data") {
-            //    const val = e.editorOptions.elementAttr = "editor";
-            //    e.setValue();
-            //} 
-        },
-        onRowClick: (cell) => {
-            console.log(cell);
         },
         onRowRemoved: (e) => {
             $("#removedRow").addClass("card");
@@ -146,7 +140,7 @@ $(() => {
                 allowHiding: false,
                 allowEditing: false,
                 caption: 'TourId',
-                width: 100,
+                width: 300,
                 alignment: 'center'
             },
             {
@@ -178,7 +172,7 @@ $(() => {
             {
                 dataField: 'date',
                 caption: 'Date',
-                //dataType: 'datetime',
+                dataType: 'date',
                 alignment: 'center',
                 validationRules: [{ type: 'required' }],
             },
