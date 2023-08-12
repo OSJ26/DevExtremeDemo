@@ -111,7 +111,9 @@
     <Content Include="Data\DataGridWithArrayStore.js" />
     <Content Include="Data\dataOperation.js" />
     <Content Include="Data\dataSourceOperation.js" />
+    <Content Include="Data\remoteDataSource.js" />
     <Content Include="Js\DataGridBaiscFunctionality.js" />
+    <Content Include="Js\GridRemoteOperation].js" />
     <Content Include="Js\GridWithCustomStore.js" />
     <Content Include="Js\GridWithDataSource.js" />
     <Content Include="Other\loading.gif" />
@@ -178,6 +180,7 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
     <Content Include="css\style.css" />
     <Content Include="View\DataGridBasicFunctionality.html" />
+    <Content Include="View\GridRemoteOperation.html" />
     <Content Include="View\GridWithCustomStore.html" />
     <Content Include="View\GridWithDataSource.html" />
     <Content Include="Web.config" />

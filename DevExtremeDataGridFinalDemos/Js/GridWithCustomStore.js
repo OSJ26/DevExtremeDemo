@@ -98,6 +98,12 @@ $(() => {
             mode: 'single'
         },
 
+        keyboardNavigation: {
+            editKeyOption: "startEdit",
+            editOnKeyPress: true,
+            enterKeyDirection:'column'
+        },
+
         onInitialized: (e) => {
             //console.log(e.component.option("elementAttr", "body"));
             $("#body").addClass("body");
