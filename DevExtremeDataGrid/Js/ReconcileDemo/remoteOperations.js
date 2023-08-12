@@ -8,8 +8,8 @@
         load(loadOptions) {
             const deferred = $.Deferred();
             const args = {};
-
-            const op = ['skip','take','requireTotalCount','sort','filter','totalSummary','group','groupSummary'];
+            console.log(loadOptions);
+            const op = ['skip', 'take', 'requireTotalCount','sort','filter','totalSummary','group','groupSummary'];
             op.forEach((i) => {
                 if (i in loadOptions && isNotEmpty(loadOptions[i])) {
                     args[i] = JSON.stringify(loadOptions[i]);
@@ -28,7 +28,7 @@
                         totalSummary: result.totalSummary,
                         summary: result.summary,
                         groupSummary: result.groupSummary,
-                        totalCount: result.totalCount,
+                        totalCount: result.totalCount
                     })
                 },
                 error: () => {
@@ -56,9 +56,9 @@
             sorting: true,
             summary: true
         },
-        grouping: {
-            autoExpandAll: false
-        },
+        //grouping: {
+        //    autoExpandAll: false
+        //},
         columnChooser: {
             enabled: true,
             allowSearch: true,

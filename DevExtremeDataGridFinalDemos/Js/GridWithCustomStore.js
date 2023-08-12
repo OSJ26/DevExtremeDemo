@@ -30,7 +30,7 @@ $(() => {
     var event;
     const grid = $('#gridFunction').dxDataGrid({
         dataSource: loadData,
-        showBorder: true,
+        showBorders: true,
         showColumnLines: true,
         showRowLines: true,
         rowAlternationEnabled: true,
@@ -97,6 +97,24 @@ $(() => {
         selection: {
             mode: 'single'
         },
+
+        onInitialized: (e) => {
+            //console.log(e.component.option("elementAttr", "body"));
+            $("#body").addClass("body");
+        },
+
+        onContentReady: (e) => {
+            console.log(e);
+        },
+
+        onEditorPreparing: (e) => {
+            console.log(e);
+        },
+
+        onEditorPrepared: (e) => {
+            console.log(e);
+        },
+
         onSelectionChanged: (e) => {
             //console.log(e.component.getDataSource());
             const data = e.selectedRowsData;
@@ -109,16 +127,30 @@ $(() => {
                 $("#passanger").text("Passanger: " + data[0].max_passanger);
             }
         },
+
         onRowPrepared: (e) => {
-            console.log(e);
+            //console.log(e);
             if (e.rowType == 'header') {
                 e.rowElement[0].bgColor = "#6c7ba1";
                 $(".dx-header-row").addClass('header');
             }
+            
             if (e.rowType == "data") {
                 $(".dx-texteditor-input").addClass("myEditor");
             }
         },
+
+        onRowInserted: (e) => {
+            $("#insertedDetails").addClass("card");
+            $("#intitle").text("Inserted Data");
+            $("#inkey").text("Id: " + e.data.id);
+            $("#insource").text("Source: " + e.data.source);
+            $("#indestination").text("Destination: " + e.data.destination);
+            $("#inprice").text("Price: " + e.data.price);
+            $("#indate").text("Date: " + e.data.date);
+            $("#inpassanger").text("Passanger: " + e.data.max_passanger);
+        },
+
         onRowRemoved: (e) => {
             $("#removedRow").addClass("card");
             $("#title").text("Removed Row");
@@ -129,9 +161,7 @@ $(() => {
             $("#date1").text("Date: " + e.data.date);
             $("#passanger1").text("Passanger: " + e.data.max_passanger);
         },
-        onUpdated: (e) => {
-            console.log(e);
-        },
+
         columns: [
             {
                 dataField: 'id',
@@ -139,6 +169,7 @@ $(() => {
                 allowGrouping: false,
                 allowHiding: false,
                 allowEditing: false,
+                showInColumnChooser: false,
                 caption: 'TourId',
                 width: 300,
                 alignment: 'center'
