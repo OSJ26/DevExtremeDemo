@@ -35,6 +35,9 @@ $(() => {
         showRowLines: true,
         rowAlternationEnabled: true,
 
+        focusedRowEnabled: true,
+        focusedRowIndex: 0,
+        autoNavigateToFocusedRow: false,
         editing: {
             allowUpdating: true,
             allowDeleting: true,
@@ -104,6 +107,13 @@ $(() => {
             enterKeyDirection:'column'
         },
 
+        onOptionChanged: (e) => {
+            //debugger;
+            console.log(e);
+            console.log(e.component.option("editing.editRowKey"));
+            console.log(e.component.option("editing.changes"));
+        },
+
         onInitialized: (e) => {
             //console.log(e.component.option("elementAttr", "body"));
             $("#body").addClass("body");
@@ -134,17 +144,17 @@ $(() => {
             }
         },
 
-        onRowPrepared: (e) => {
-            //console.log(e);
-            if (e.rowType == 'header') {
-                e.rowElement[0].bgColor = "#6c7ba1";
-                $(".dx-header-row").addClass('header');
-            }
+        //onRowPrepared: (e) => {
+        //    //console.log(e);
+        //    if (e.rowType == 'header') {
+        //        e.rowElement[0].bgColor = "#6c7ba1";  
+        //        $(".dx-header-row").addClass('header');
+        //    }
             
-            if (e.rowType == "data") {
-                $(".dx-texteditor-input").addClass("myEditor");
-            }
-        },
+        //    if (e.rowType == "data") {
+        //        $(".dx-texteditor-input").addClass("myEditor");
+        //    }
+        //},
 
         onRowInserted: (e) => {
             $("#insertedDetails").addClass("card");
@@ -166,6 +176,14 @@ $(() => {
             $("#price1").text("Price: " + e.data.price);
             $("#date1").text("Date: " + e.data.date);
             $("#passanger1").text("Passanger: " + e.data.max_passanger);
+        },
+
+        onToolbarPreparing: (e) => {
+            console.log(e.toolbarOptions.items[4].widget);
+            if (e.toolbarOptions.items[4].widget === "dxSelectBox") {
+                $(".dx-texteditor-input").removeClass("myEditor");
+            }
+            
         },
 
         columns: [
@@ -232,85 +250,77 @@ $(() => {
                 validationRules: [{ type: 'required' }],
             }
         ],
-        //toolbar: {
-        //    items: [
-        //        {
-        //            location: 'before',
-        //            widget: 'dxButton',
-        //            options: {
-        //                icon: "showpanel",
-        //                onClick(e) {
-        //                    const expanding = e.component.option("icon") === "showpanel";
-        //                    grid.option('grouping.autoExpandAll', expanding);
-        //                    e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
-        //                },
-        //                elementAttr: {
-        //                    class: "button"
-        //                }
-        //            }
-        //        },
+        toolbar: {
+            items: [
+                {
+                    location: 'before',
+                    widget: 'dxButton',
+                    options: {
+                        icon: "showpanel",
+                        onClick(e) {
+                            const expanding = e.component.option("icon") === "showpanel";
+                            grid.option('grouping.autoExpandAll', expanding);
+                            e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
+                        }
+                    }
+                },
 
-        //        {
-        //            location: 'after',
-        //            widget: 'dxButton',
-        //            options: {
-        //                icon: 'clear',
-        //                elementAttr: {
-        //                    class: "button"
-        //                },
-        //                onClick() {
-        //                    grid.clearGrouping();
-        //                    DevExpress.ui.notify("Grouping Cleared Successfully", "Info", 1500);
-        //                },
-        //            }
-        //        },
-        //        {
-        //            location: 'after',
-        //            widget: 'dxButton',
-        //            options: {
-        //                icon: 'refresh',
-        //                name: "myBtn",
-        //                onClick() {
-        //                    grid.refresh();
-        //                    DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
-        //                },
-        //                elementAttr: {
-        //                    class: "button"
-        //                }
-        //            }
-        //        },
-        //        {
-        //            location: 'before',
-        //            widget: 'dxSelectBox',
-        //            options: {
-        //                width: 300,
-        //                items: [{
-        //                    value: 'source',
-        //                    text: 'Grouping by Source',
-        //                }, {
-        //                    value: 'destination',
-        //                    text: 'Grouping by Destination',
-        //                }, {
-        //                    value: 'price',
-        //                    text: 'Grouping by Price',
-        //                }],
-        //                displayExpr: 'text',
-        //                valueExpr: 'value',
-        //                value: 'source',
-        //                onValueChanged(e) {
-        //                    grid.clearGrouping();
-        //                    grid.columnOption(e.value, 'groupIndex', 0);
-        //                },
-        //                elementAttr: {
-        //                    class: "select"
-        //                }
-        //            },
+                {
+                    location: 'after',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'group',
+                        onClick() {
+                            grid.clearGrouping();
+                            DevExpress.ui.notify("Grouping Cleared Successfully", "Info", 1500);
+                        },
+                    }
+                },
+                {
+                    location: 'after',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'refresh',
+                        name: "myBtn",
+                        onClick() {
+                            grid.refresh();
+                            DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
+                        }
+                    }
+                },
+                'columnChooserButton',
+                {
+                    location: 'before',
+                    widget: 'dxSelectBox',
+                    options: {
+                        width: 300,
+                        items: [{
+                            value: 'source',
+                            text: 'Grouping by Source',
+                        }, {
+                            value: 'destination',
+                            text: 'Grouping by Destination',
+                        }, {
+                            value: 'price',
+                            text: 'Grouping by Price',
+                        }],
+                        displayExpr: 'text',
+                        valueExpr: 'value',
+                        value: 'source',
+                        onValueChanged(e) {
+                            grid.clearGrouping();
+                            grid.columnOption(e.value, 'groupIndex', 0);
+                        },
+                        elementAttr: {
+                            class: "select"
+                        }
+                    },
 
-        //        },
-        //    ],
+                },
+            ],
 
 
-        //},
+        },
         summary: {
             totalItems: [
                 {

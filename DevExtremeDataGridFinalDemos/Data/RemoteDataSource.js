@@ -7,8 +7,8 @@ export const data = new DevExpress.data.CustomStore({
         const deferred = $.Deferred();
         const args = {};
         console.log(loadOptions);
-        const op = ['skip', 'take', 'requireTotalCount', 'requireGroupCount', 'sort', 'filter', 'totalSummary', 'group', 'groupSummary'];
-        op.forEach((i) => {
+        const options = ['skip', 'take', 'requireTotalCount', 'requireGroupCount', 'sort', 'filter', 'totalSummary', 'group', 'groupSummary'];
+        options.forEach((i) => {
             if (i in loadOptions && isNotEmpty(loadOptions[i])) {
                 args[i] = JSON.stringify(loadOptions[i]);
             }
