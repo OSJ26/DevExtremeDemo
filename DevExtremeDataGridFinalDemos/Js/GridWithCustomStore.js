@@ -67,10 +67,6 @@ $(() => {
         groupPanel: {
             visible: true,
         },
-        scrolling: {
-            rowRenderingMode: "virtual",
-            mode: "infinite",
-        },
         loadPanel: {
             enabled: false,
             indicatorSrc: '../Other/loading.gif',
@@ -113,13 +109,14 @@ $(() => {
 
         onOptionChanged: (e) => {
             //debugger;
-            console.log(e);
-            console.log(e.component.option("editing.editRowKey"));
-            console.log(e.component.option("editing.changes"));
+            //console.log(e);
+            //console.log(e.component.option("editing.editRowKey"));
+            //console.log(e.component.option("editing.changes"));
         },
 
         onInitialized: (e) => {
             //console.log(e.component.option("elementAttr", "body"));
+            console.log(e);
             $("#body").addClass("body");
         },
 
@@ -175,7 +172,7 @@ $(() => {
         },
 
         onToolbarPreparing: (e) => {
-            console.log(e.toolbarOptions.items[4].widget);
+            //console.log(e.toolbarOptions.items[4].widget);
             if (e.toolbarOptions.items[4].widget === "dxSelectBox") {
                 $(".dx-texteditor-input").removeClass("myEditor");
             }
@@ -255,81 +252,85 @@ $(() => {
                 validationRules: [{ type: 'required' }],
             }
         ],
-        //toolbar: {
-        //    items: [
-        //        {
-        //            location: 'before',
-        //            widget: 'dxButton',
-        //            options: {
-        //                icon: "showpanel",
-        //                onClick(e) {
-        //                    const expanding = e.component.option("icon") === "showpanel";
-        //                    grid.option('grouping.autoExpandAll', expanding);
-        //                    e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
-        //                }
-        //            }
-        //        },
-        //        {
-        //            location: 'after',
-        //            widget: 'dxButton',
-        //            options: {
-        //                icon: 'group',
-        //                onClick() {
-        //                    grid.clearGrouping();
-        //                    DevExpress.ui.notify("Grouping Cleared Successfully", "Info", 1500);
-        //                },
-        //            }
-        //        },
-        //        {
-        //            location: 'after',
-        //            widget: 'dxButton',
-        //            options: {
-        //                icon: 'refresh',
-        //                name: "myBtn",
-        //                onClick() {
-        //                    grid.refresh();
-        //                    DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
-        //                }
-        //            }
-        //        },
-        //        'columnChooserButton',
-        //        {
-        //            location: 'before',
-        //            widget: 'dxSelectBox',
-        //            options: {
-        //                width: 300,
-        //                items: [{
-        //                    value: 'source',
-        //                    text: 'Grouping by Source',
-        //                }, {
-        //                    value: 'destination',
-        //                    text: 'Grouping by Destination',
-        //                }, {
-        //                    value: 'price',
-        //                    text: 'Grouping by Price',
-        //                }],
-        //                displayExpr: 'text',
-        //                valueExpr: 'value',
-        //                value: 'source',
-        //                onValueChanged(e) {
-        //                    grid.clearGrouping();
-        //                    grid.columnOption(e.value, 'groupIndex', 0);
-        //                },
-        //                elementAttr: {
-        //                    class: "select"
-        //                }
-        //            },
+        toolbar: {
+            items: [
+                "addRowButton",
+                "saveButton",
+                //"groupPanel",
+                {
+                    location: 'before',
+                    widget: 'dxButton',
+                    options: {
+                        icon: "showpanel",
+                        onClick(e) {
+                            const expanding = e.component.option("icon") === "showpanel";
+                            grid.option('grouping.autoExpandAll', expanding);
+                            e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
+                        }
+                    }
+                },
+                {
+                    location: 'after',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'group',
+                        onClick() {
+                            grid.clearGrouping();
+                            DevExpress.ui.notify("Grouping Cleared Successfully", "Info", 1500);
+                        },
+                    }
+                },
+                {
+                    location: 'after',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'revert',
+                        name: "myBtn",
+                        onClick() {
+                            grid.refresh();
+                            DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
+                        }
+                    }
+                },
+                'columnChooserButton',
+                {
+                    location: 'before',
+                    widget: 'dxSelectBox',
+                    options: {
+                        width: 300,
+                        items: [{
+                            value: 'source',
+                            text: 'Grouping by Source',
+                        }, {
+                            value: 'destination',
+                            text: 'Grouping by Destination',
+                        }, {
+                            value: 'price',
+                            text: 'Grouping by Price',
+                        }],
+                        displayExpr: 'text',
+                        valueExpr: 'value',
+                        value: 'source',
+                        onValueChanged(e) {
+                            grid.clearGrouping();
+                            grid.columnOption(e.value, 'groupIndex', 0);
+                        },
+                        elementAttr: {
+                            class: "select"
+                        }
+                    },
 
-        //        },
-        //    ],
+                },
+            ],
 
 
-        //},
+        },
         summary: {
             totalItems: [
                 {
                     column: 'id',
                     summaryType: 'count',
+                    recalculateWhileEditing: true,
                     displayFormat: 'Total Bus : {0}',
                 },
             ],
