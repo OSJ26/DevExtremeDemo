@@ -123,14 +123,6 @@ $(() => {
             console.log(e);
         },
 
-        onEditorPreparing: (e) => {
-            console.log(e);
-        },
-
-        onEditorPrepared: (e) => {
-            console.log(e);
-        },
-
         onSelectionChanged: (e) => {
             //console.log(e.component.getDataSource());
             const data = e.selectedRowsData;
@@ -250,77 +242,76 @@ $(() => {
                 validationRules: [{ type: 'required' }],
             }
         ],
-        toolbar: {
-            items: [
-                {
-                    location: 'before',
-                    widget: 'dxButton',
-                    options: {
-                        icon: "showpanel",
-                        onClick(e) {
-                            const expanding = e.component.option("icon") === "showpanel";
-                            grid.option('grouping.autoExpandAll', expanding);
-                            e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
-                        }
-                    }
-                },
+        //toolbar: {
+        //    items: [
+        //        {
+        //            location: 'before',
+        //            widget: 'dxButton',
+        //            options: {
+        //                icon: "showpanel",
+        //                onClick(e) {
+        //                    const expanding = e.component.option("icon") === "showpanel";
+        //                    grid.option('grouping.autoExpandAll', expanding);
+        //                    e.component.option('icon', expanding ? 'hidepanel' : 'showpanel');
+        //                }
+        //            }
+        //        },
+        //        {
+        //            location: 'after',
+        //            widget: 'dxButton',
+        //            options: {
+        //                icon: 'group',
+        //                onClick() {
+        //                    grid.clearGrouping();
+        //                    DevExpress.ui.notify("Grouping Cleared Successfully", "Info", 1500);
+        //                },
+        //            }
+        //        },
+        //        {
+        //            location: 'after',
+        //            widget: 'dxButton',
+        //            options: {
+        //                icon: 'refresh',
+        //                name: "myBtn",
+        //                onClick() {
+        //                    grid.refresh();
+        //                    DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
+        //                }
+        //            }
+        //        },
+        //        'columnChooserButton',
+        //        {
+        //            location: 'before',
+        //            widget: 'dxSelectBox',
+        //            options: {
+        //                width: 300,
+        //                items: [{
+        //                    value: 'source',
+        //                    text: 'Grouping by Source',
+        //                }, {
+        //                    value: 'destination',
+        //                    text: 'Grouping by Destination',
+        //                }, {
+        //                    value: 'price',
+        //                    text: 'Grouping by Price',
+        //                }],
+        //                displayExpr: 'text',
+        //                valueExpr: 'value',
+        //                value: 'source',
+        //                onValueChanged(e) {
+        //                    grid.clearGrouping();
+        //                    grid.columnOption(e.value, 'groupIndex', 0);
+        //                },
+        //                elementAttr: {
+        //                    class: "select"
+        //                }
+        //            },
 
-                {
-                    location: 'after',
-                    widget: 'dxButton',
-                    options: {
-                        icon: 'group',
-                        onClick() {
-                            grid.clearGrouping();
-                            DevExpress.ui.notify("Grouping Cleared Successfully", "Info", 1500);
-                        },
-                    }
-                },
-                {
-                    location: 'after',
-                    widget: 'dxButton',
-                    options: {
-                        icon: 'refresh',
-                        name: "myBtn",
-                        onClick() {
-                            grid.refresh();
-                            DevExpress.ui.notify("Data Refreshed Successfully", "Info", 1500);
-                        }
-                    }
-                },
-                'columnChooserButton',
-                {
-                    location: 'before',
-                    widget: 'dxSelectBox',
-                    options: {
-                        width: 300,
-                        items: [{
-                            value: 'source',
-                            text: 'Grouping by Source',
-                        }, {
-                            value: 'destination',
-                            text: 'Grouping by Destination',
-                        }, {
-                            value: 'price',
-                            text: 'Grouping by Price',
-                        }],
-                        displayExpr: 'text',
-                        valueExpr: 'value',
-                        value: 'source',
-                        onValueChanged(e) {
-                            grid.clearGrouping();
-                            grid.columnOption(e.value, 'groupIndex', 0);
-                        },
-                        elementAttr: {
-                            class: "select"
-                        }
-                    },
-
-                },
-            ],
+        //        },
+        //    ],
 
 
-        },
+        //},
         summary: {
             totalItems: [
                 {
