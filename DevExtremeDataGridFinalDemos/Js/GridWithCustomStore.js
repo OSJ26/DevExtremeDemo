@@ -34,7 +34,7 @@ $(() => {
         showColumnLines: true,
         showRowLines: true,
         rowAlternationEnabled: true,
-
+        height: 450,
         focusedRowEnabled: true,
         focusedRowIndex: 0,
         autoNavigateToFocusedRow: false,
@@ -66,6 +66,10 @@ $(() => {
         },
         groupPanel: {
             visible: true,
+        },
+        scrolling: {
+            rowRenderingMode: "virtual",
+            mode: "infinite",
         },
         loadPanel: {
             enabled: false,
@@ -194,14 +198,13 @@ $(() => {
                 dataField: 'source',
                 allowHiding: false,
                 caption: 'Source',
+                width: 200,
                 alignment: 'center',
-                validationRules: [{ type: 'required' }],
-            },
-            {
-                dataField: 'destination',
-                allowHiding: false,
-                caption: 'Destination',
-                alignment: 'center',
+                calculateCellValue(data) {
+                    return [
+                        data.source, data.destination]
+                        .join(' ~ ');
+                },
                 validationRules: [{ type: 'required' }],
             },
             {
@@ -219,6 +222,7 @@ $(() => {
             {
                 dataField: 'date',
                 caption: 'Date',
+                allowHiding: false,
                 dataType: 'date',
                 alignment: 'center',
                 validationRules: [{ type: 'required' }],
