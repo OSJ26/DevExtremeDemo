@@ -98,7 +98,7 @@ $(() => {
             visible: true
         },
         paging: {
-            pageSize:5
+            pageSize: 5
         },
         repaintChangesOnly: true,
         selection: {
@@ -108,7 +108,7 @@ $(() => {
         keyboardNavigation: {
             editKeyOption: "startEdit",
             editOnKeyPress: true,
-            enterKeyDirection:'column'
+            enterKeyDirection: 'column'
         },
 
         onOptionChanged: (e) => {
@@ -146,7 +146,7 @@ $(() => {
         //        e.rowElement[0].bgColor = "#6c7ba1";  
         //        $(".dx-header-row").addClass('header');
         //    }
-            
+
         //    if (e.rowType == "data") {
         //        $(".dx-texteditor-input").addClass("myEditor");
         //    }
@@ -179,7 +179,7 @@ $(() => {
             if (e.toolbarOptions.items[4].widget === "dxSelectBox") {
                 $(".dx-texteditor-input").removeClass("myEditor");
             }
-            
+
         },
 
         columns: [
@@ -189,27 +189,35 @@ $(() => {
                 allowGrouping: false,
                 allowHiding: false,
                 allowEditing: false,
+                allowFiltering: false,
                 showInColumnChooser: false,
-                caption: 'TourId',
-                width: 300,
+                caption: 'BusId',
+                width: 150,
                 alignment: 'center'
             },
             {
-                dataField: 'source',
-                allowHiding: false,
-                caption: 'Source',
-                width: 200,
-                alignment: 'center',
-                calculateCellValue(data) {
-                    return [
-                        data.source, data.destination]
-                        .join(' ~ ');
+                caption: "Buses",
+                alignment: "center",
+                columns: [{
+                    dataField: 'source',
+                    allowHiding: false,
+                    caption: 'Source',
+                    width: 200,
+                    alignment: 'center',
+                    validationRules: [{ type: 'required' }],
                 },
-                validationRules: [{ type: 'required' }],
+                {
+                    dataField: 'destination',
+                    allowHiding: false,
+                    caption: 'Destination',
+                    width: 200,
+                    alignment: 'center',
+                    validationRules: [{ type: 'required' }],
+                }]
             },
             {
                 dataField: 'price',
-                caption: 'Price',
+                caption: 'Amount',
                 alignment: 'center',
                 validationRules: [{ type: 'required' }],
             },
@@ -242,6 +250,7 @@ $(() => {
             {
                 dataField: 'max_passanger',
                 caption: 'Passanger',
+                allowFiltering: false,
                 alignment: 'center',
                 validationRules: [{ type: 'required' }],
             }
