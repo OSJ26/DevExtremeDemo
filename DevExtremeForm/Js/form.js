@@ -42,6 +42,7 @@
             {
                 type: "custom",
                 validationCallback: validateMe,
+                reevaluate: true,
                 message: "Name must be contain 8 character"
             }]
     }).dxTextBox("instance");
