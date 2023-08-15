@@ -3,6 +3,7 @@
 }
 export const data = new DevExpress.data.CustomStore({
     key: 'Id',
+    loadMode: 'raw',
     load: (loadOptions) => {
         const deferred = $.Deferred();
         const args = {};
@@ -21,7 +22,7 @@ export const data = new DevExpress.data.CustomStore({
             success: (result) => {
                 console.log("Hello");
                 deferred.resolve(result.data, {
-                    sort: result.sort,
+                    //sort: result.sort,
                     filter: result.filter,
                     totalSummary: result.totalSummary,
                     summary: result.summary,

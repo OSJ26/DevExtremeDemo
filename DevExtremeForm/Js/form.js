@@ -11,20 +11,20 @@
         return d.promise();
     }
 
-    //$('#form').on('submit', (e) => {
-    //    e.preventDefault();
-    //    DevExpress.ui.notify({
-    //        message: 'You have submitted the form',
-    //        position: {
-    //            my: 'center top',
-    //            at: 'center top',
-    //        },
-    //    }, 'success', 3000);
+    const validateMe = (param) => {
+        const value = param.value;
+        const regex = "/^[A-Za-z][A-Za-z0-9_]{7,29}$/";
+        if (value == '') {
+            name.option("validationStatus", "invalid");
+            name.focus();
+        }
+        else if (value.matches(regex)) {
+            name.option("validationStatus", "invalid");
+            name.focus();
+        }
+    }
 
-    //});
-
-    $("#dxName").dxTextBox();
-    $('#dxName').dxTextBox({
+    const name = $('#dxName').dxTextBox({
         accessKey: "n",
         activeStateEnabled: true,
         focusStateEnabled: true,
@@ -38,14 +38,19 @@
         width: "500px",
 
     }).dxValidator({
-        rule: 'required',
-        message: 'Name is Required'
-    });
-    const name = $("#dxName").dxTextBox('instance');
+        validationRules: [
+            {
+                type: "custom",
+                validationCallback: validateMe,
+                message: "Name must be contain 8 character"
+            }]
+    }).dxTextBox("instance");
 
-    $('#dxPassword').dxTextBox();
-    const password = $('#dxPassword').dxTextBox("instance");
-    $('#dxPassword').dxTextBox({
+    name.on("focusOut", () => {
+        $('#dxName').dxValidator("validate");
+    });
+
+    const password = $('#dxPassword').dxTextBox({
         accessKey: 'p',
         buttons: [{
             name: "show",
@@ -95,13 +100,10 @@
             type: "required",
             message: "Password Requiered"
         }]
-    });
+    }).dxTextBox("instance");
 
     /////Confirm Password start
-    $('#dxCnfPassword').dxTextBox();
-    const cnfPassword = $('#dxCnfPassword').dxTextBox("instance");
-
-    $('#dxCnfPassword').dxTextBox({
+    const cnfPassword = $('#dxCnfPassword').dxTextBox({
         accessKey: 'p',
         buttons: [{
             name: "show",
@@ -147,12 +149,10 @@
             },
             message: "password and Confirm Password Not Matched"
         }]
-    });
+    }).dxTextBox("instance");
     /////Confirm Password end
 
-    $('#dxMyAddress').dxTextArea();
-    const myAddress = $('#dxMyAddress').dxTextArea("instance")
-    $("#dxMyAddress").dxTextArea({
+    const myAddress = $("#dxMyAddress").dxTextArea({
         accessKey: "A",
         activeStateEnabled: true,
         label: "Address",
@@ -182,11 +182,9 @@
             type: "required",
             message: "Address Is Requiered"
         }]
-    });
+    }).dxTextArea("instance");
 
-    $("#dxCountry").dxSelectBox();
-    const country = $("#dxCountry").dxSelectBox("instance");
-    $("#dxCountry").dxSelectBox({
+    const country = $("#dxCountry").dxSelectBox({
         dataSource: countries,
         validationMessagePosition: 'bottom',
         placeholder: "Select Country",
@@ -198,42 +196,30 @@
             type: "required",
             message: "Country can not be empty"
         }]
-    })
+    }).dxSelectBox("instance");
 
-
-    $("#dxCity").dxTextBox({
+    const city = $('#dxCity').dxTextBox({
         label: "City",
         labelMode: "floating",
         showClearButton: true,
         name: "city",
-        width: "500px"
+        width: "500px",
     }).dxValidator({
-        validationRules: [{
-            type: "required",
-            message: "City can not be empty"
-        },
-        {
-            type: "pattern",
-            pattern: '^[^0-9]+$',
-            message: "You can not use digit in city"
-        },
-        {
-            type: "stringLength",
-            min: 3,
-            max: 10,
-            message: "City must contain 3 character"
-        }
-        ]
-    });
-    const city = $("#dxCity").dxTextBox("instance");
+        rule: 'required',
+        message: 'City is Required'
+    }).dxTextBox("instance");
 
-    $("#dxEmail").dxTextBox();
-    const email = $("#dxEmail").dxTextBox("instance");
-    $('#dxEmail').dxTextBox({
+    city.on("focusOut", (e) => {
+        if (e.event.target.value == '') {
+            city.option("validationStatus", "invalid");
+            city.focus();
+        }
+    });
+
+    const email = $('#dxEmail').dxTextBox({
         label: "email",
         labelMode: "floating",
         name: "email",
-
         onFocusOut: (e) => {
             let emailId = email.option("value");
             console.log(emailId);
@@ -262,7 +248,7 @@
             }
         }
         ]
-    });
+    }).dxTextBox("instance");
 
     const termsCheck = $("#dxTerms").dxCheckBox({
         accessKey: "c",
@@ -284,7 +270,7 @@
             comparisonTarget() { return true; },
             message: 'You must agree to the Terms and Conditions',
         }],
-    });
+    }).dxCheckBox("instance");
 
     const myDate = $("#dxBirthDate").dxDateBox({
         acceptCustomValue: true,
