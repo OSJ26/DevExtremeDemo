@@ -8,16 +8,12 @@ export const data = new DevExpress.data.CustomStore({
         const deferred = $.Deferred();
         const args = {};
         console.log(loadOptions);
-        //if ("sort" in loadOptions) {
-        //    delete loadOptions.sort;
-        //}
 
-        //object destrcuting 
-        const { skip, sort, filter, ...filteredLoadOptions } = loadOptions;
+        const { sort, filter, group, totalSummary, ...filteredOptions } = loadOptions;
 
-        const options = ['skip', 'take', 'requireTotalCount', 'requireGroupCount', 'sort', 'filter', 'totalSummary', 'group', 'groupSummary'];
+        const options = ['skip', 'take', 'requireTotalCount', 'requireGroupCount', 'sort','filter', 'totalSummary', 'group', 'groupSummary'];
         options.forEach((i) => {
-            if (i in filteredLoadOptions && isNotEmpty(loadOptions[i])) {
+            if (i in filteredOptions && isNotEmpty(loadOptions[i])) {
                 args[i] = JSON.stringify(loadOptions[i]);
             }
         });
