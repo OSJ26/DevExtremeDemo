@@ -3,14 +3,21 @@
 }
 export const data = new DevExpress.data.CustomStore({
     key: 'Id',
-    loadMode: 'raw',
+    loadMode: 'processed',
     load: (loadOptions) => {
         const deferred = $.Deferred();
         const args = {};
         console.log(loadOptions);
+        //if ("sort" in loadOptions) {
+        //    delete loadOptions.sort;
+        //}
+
+        //object destrcuting 
+        const { skip, sort, filter, ...filteredLoadOptions } = loadOptions;
+
         const options = ['skip', 'take', 'requireTotalCount', 'requireGroupCount', 'sort', 'filter', 'totalSummary', 'group', 'groupSummary'];
         options.forEach((i) => {
-            if (i in loadOptions && isNotEmpty(loadOptions[i])) {
+            if (i in filteredLoadOptions && isNotEmpty(loadOptions[i])) {
                 args[i] = JSON.stringify(loadOptions[i]);
             }
         });
@@ -22,7 +29,7 @@ export const data = new DevExpress.data.CustomStore({
             success: (result) => {
                 console.log("Hello");
                 deferred.resolve(result.data, {
-                    //sort: result.sort,
+                    sort: result.sort,
                     filter: result.filter,
                     totalSummary: result.totalSummary,
                     summary: result.summary,
