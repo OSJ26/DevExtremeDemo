@@ -107,15 +107,7 @@ $(() => {
             enterKeyDirection: 'column'
         },
 
-        onOptionChanged: (e) => {
-            //debugger;
-            //console.log(e);
-            //console.log(e.component.option("editing.editRowKey"));
-            //console.log(e.component.option("editing.changes"));
-        },
-
         onInitialized: (e) => {
-            //console.log(e.component.option("elementAttr", "body"));
             console.log(e);
             $("#body").addClass("body");
         },
@@ -125,7 +117,6 @@ $(() => {
         },
 
         onSelectionChanged: (e) => {
-            //console.log(e.component.getDataSource());
             const data = e.selectedRowsData;
             if (data) {
                 $("#selectedDetails").addClass("card");
@@ -136,18 +127,6 @@ $(() => {
                 $("#passanger").text("Passanger: " + data[0].max_passanger);
             }
         },
-
-        //onRowPrepared: (e) => {
-        //    //console.log(e);
-        //    if (e.rowType == 'header') {
-        //        e.rowElement[0].bgColor = "#6c7ba1";  
-        //        $(".dx-header-row").addClass('header');
-        //    }
-
-        //    if (e.rowType == "data") {
-        //        $(".dx-texteditor-input").addClass("myEditor");
-        //    }
-        //},
 
         onRowInserted: (e) => {
             $("#insertedDetails").addClass("card");
@@ -172,7 +151,6 @@ $(() => {
         },
 
         onToolbarPreparing: (e) => {
-            //console.log(e.toolbarOptions.items[4].widget);
             if (e.toolbarOptions.items[4].widget === "dxSelectBox") {
                 $(".dx-texteditor-input").removeClass("myEditor");
             }
@@ -195,6 +173,7 @@ $(() => {
             {
                 caption: "Buses",
                 alignment: "center",
+                allowHiding: false,
                 columns: [{
                     dataField: 'source',
                     allowHiding: false,
@@ -337,30 +316,4 @@ $(() => {
         }
     }).dxDataGrid('instance');
 
-    //grid.on("saving", () => {
-    //    loadPanel.option("delay", 500);
-    //    loadPanel.option("message", "Data Saving...");
-    //    loadPanel.show();
-    //    setTimeout(() => {
-    //        loadPanel.hide();
-    //    }, 1000)
-    //})
-
-    //grid.on("saved", () => {
-    //    loadPanel.option("delay", 1500);
-    //    loadPanel.option("message", "Data Saved...");
-    //    loadPanel.show();
-    //    setTimeout(() => {
-    //        loadPanel.hide();
-    //    }, 1000)
-    //})
-    //grid.on("rowUpdated", (e) => {
-    //    const key = e.key;
-    //    const index = grid.getRowIndexByKey(key);
-    //    const row = grid.getRowElement(index);
-    //    row.addClass('updatingState');
-    //})
-
-    //grid.beginCustomLoading("Data Loading..");
-    //export default loadPanel;
 });
