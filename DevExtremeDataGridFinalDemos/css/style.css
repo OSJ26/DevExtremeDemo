@@ -7,6 +7,9 @@
     cursor: pointer;
 }
 
+.dx-pager .dx-page-sizes .dx-selection, .dx-pager .dx-pages .dx-selection {
+    border-radius: 4px;
+}
 .select {
     width: 650px;
     height: 30px;
