@@ -94,7 +94,8 @@ $(() => {
             visible: true
         },
         paging: {
-            pageSize: 5
+            pageSize: 5,
+            pageIndex:3
         },
         repaintChangesOnly: true,
         selection: {
@@ -111,7 +112,19 @@ $(() => {
             console.log(e);
             $("#body").addClass("body");
         },
-
+        onCellPrepared: (gridCell) => {
+            console.log(gridCell);
+            if (gridCell.rowType == "data" && gridCell.column.dataField == "price") {
+                gridCell.cellElement.css("background-color", gridCell.data.price >= 50 ? "green" : ""); 
+            }
+            if (gridCell.rowType == "group" && gridCell.columnIndex == 1) {
+                gridCell.cellElement.html(gridCell.data.key);
+                gridCell.cellElement.attr("title", "");
+            }
+        },
+        //onRowPrepared: (test) => {
+        //    console.log(test);
+        //},
         onContentReady: (e) => {
             console.log(e);
         },
@@ -235,7 +248,6 @@ $(() => {
             items: [
                 "addRowButton",
                 "saveButton",
-                //"groupPanel",
                 {
                     location: 'before',
                     widget: 'dxButton',
@@ -248,6 +260,7 @@ $(() => {
                         }
                     }
                 },
+                "groupPanel",
                 {
                     location: 'after',
                     widget: 'dxButton',
@@ -272,34 +285,34 @@ $(() => {
                     }
                 },
                 'columnChooserButton',
-                {
-                    location: 'before',
-                    widget: 'dxSelectBox',
-                    options: {
-                        width: 300,
-                        items: [{
-                            value: 'source',
-                            text: 'Grouping by Source',
-                        }, {
-                            value: 'destination',
-                            text: 'Grouping by Destination',
-                        }, {
-                            value: 'price',
-                            text: 'Grouping by Price',
-                        }],
-                        displayExpr: 'text',
-                        valueExpr: 'value',
-                        value: 'source',
-                        onValueChanged(e) {
-                            grid.clearGrouping();
-                            grid.columnOption(e.value, 'groupIndex', 0);
-                        },
-                        elementAttr: {
-                            class: "select"
-                        }
-                    },
+                //{
+                //    location: 'before',
+                //    widget: 'dxSelectBox',
+                //    options: {
+                //        width: 300,
+                //        items: [{
+                //            value: 'source',
+                //            text: 'Grouping by Source',
+                //        }, {
+                //            value: 'destination',
+                //            text: 'Grouping by Destination',
+                //        }, {
+                //            value: 'price',
+                //            text: 'Grouping by Price',
+                //        }],
+                //        displayExpr: 'text',
+                //        valueExpr: 'value',
+                //        value: 'source',
+                //        onValueChanged(e) {
+                //            grid.clearGrouping();
+                //            grid.columnOption(e.value, 'groupIndex', 0);
+                //        },
+                //        elementAttr: {
+                //            class: "select"
+                //        }
+                //    },
 
-                },
+                //},
             ],
 
 

@@ -16,7 +16,8 @@ $(() => {
             showPageSizeSelector: true,
         },
         paging: {
-            pageSize: 10
+            pageSize: 10,
+            pageIndex:4,
         },
         filterPanel: {
             visible: true
@@ -34,8 +35,8 @@ $(() => {
             groupPaging: true,
             paging: true,
             summary: true,
-            sort: true,
-            group: true,
+            sort: false,
+            group: false,
             filter: true
         },
         columns: [
@@ -46,12 +47,12 @@ $(() => {
             {
                 dataField: "ProductCategoryName",
                 caption: "Category",
-                alignment: "center"
+                alignment: "center",
             },
             {
                 dataField: "ProductSubcategoryName",
                 caption: 'SubCategory',
-                alignment: "center"
+                alignment: "center",
             },
             {
                 dataField: "ProductName",
