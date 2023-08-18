@@ -2,7 +2,7 @@
     return value !== undefined && value !== '' && value !== null;
 }
 export const data = new DevExpress.data.CustomStore({
-    key: 'Id',
+    key: 'OrderNumber',
     //loadMode: 'raw',
     load: (loadOptions) => {
         const deferred = $.Deferred();
@@ -11,7 +11,7 @@ export const data = new DevExpress.data.CustomStore({
 
         //const { sort, filter, totalSummary, ...filteredOptions } = loadOptions;
 
-        const options = ['skip', 'take', 'requireTotalCount', 'requireGroupCount', 'sort','filter', 'totalSummary', 'group', 'groupSummary'];
+        const options = ['skip', 'take', 'requireTotalCount', 'requireGroupCount','sort', 'filter', 'totalSummary', 'group', 'groupSummary'];
         options.forEach((i) => {
             if (i in loadOptions && isNotEmpty(loadOptions[i])) {
                 args[i] = JSON.stringify(loadOptions[i]);
@@ -19,7 +19,7 @@ export const data = new DevExpress.data.CustomStore({
         });
 
         $.ajax({
-            url: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
+            url: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/orders',
             dataType: 'json',
             data: args,
             success: (result) => {

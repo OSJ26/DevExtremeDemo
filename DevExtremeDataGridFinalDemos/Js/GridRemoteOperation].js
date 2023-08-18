@@ -9,16 +9,16 @@ $(() => {
         onInitialized: () => {
             $("#view").addClass("body");
         },
-        pager: {
-            visible: true,
-            allowedPageSize: [5, 10, 15, 20],
-            showInfo: true,
-            showPageSizeSelector: true,
-        },
-        paging: {
-            pageSize: 10,
-            pageIndex:4,
-        },
+        //pager: {
+        //    visible: true,
+        //    allowedPageSize: [5, 10, 15, 20],
+        //    showInfo: true,
+        //    showPageSizeSelector: true,
+        //},
+        //paging: {
+        //    pageSize: 10,
+        //    pageIndex:4,
+        //},
         filterPanel: {
             visible: true
         },
@@ -32,69 +32,49 @@ $(() => {
             autoExpandAll: false,
         },
         remoteOperations: {
-            groupPaging: true,
+            groupPaging: true,  
             paging: true,
             summary: true,
-            sort: false,
-            group: false,
-            filter: true
+            sorting: true,
+            grouping: true,
+            filtering: true
         },
-        columns: [
-            {
-                dataField: "Id",
-                alignment: "center"
-            },
-            {
-                dataField: "ProductCategoryName",
-                caption: "Category",
-                alignment: "center",
-            },
-            {
-                dataField: "ProductSubcategoryName",
-                caption: 'SubCategory',
-                alignment: "center",
-            },
-            {
-                dataField: "ProductName",
-                alignment: "center"
-            },
-            {
-                dataField: "UnitPrice",
-                caption: "Price",
-                width: 100,
-                alignment: "center"
-            },
-            {
-                dataField: "SalesQuantity",
-                caption: "Quantity",
-                width: 80,
-                alignment: "center"
-            },
-            {
-                dataField: "SalesAmount",
-                alignment: "center"
-            },
-            {
-                dataField: "StoreName",
-                alignment:"center"
-            }
-        ],
+        columns: [{
+            dataField: 'OrderNumber',
+            dataType: 'number',
+        }, {
+            dataField: 'OrderDate',
+            dataType: 'date',
+        }, {
+            dataField: 'StoreCity',
+            dataType: 'string',
+        }, {
+            dataField: 'StoreState',
+            dataType: 'string',
+        }, {
+            dataField: 'Employee',
+            dataType: 'string',
+        }, {
+            dataField: 'SaleAmount',
+            dataType: 'number',
+            format: 'currency',
+        }],
         summary: {
             groupItems: [{
-                column: 'Id',
+                column: 'OrderNumber',
                 summaryType: 'count',
-                displayFormat: "Total:{0}"
+                //displayFormat: "Total:{0}"
             }],
             totalItems: [
                 {
-                    column: 'Id',
+                    column: 'OrderNumber',
                     summaryType: 'count',
-                    displayFormat: "Toatal : {0}"
+                    //displayFormat: "Toatal : {0}"
                 },
                 {
-                    column: 'SalesAmount',
+                    column: 'SaleAmount',
                     summaryType: 'sum',
-                    displayFormat: "Total: {0}"
+                    //displayFormat: "Total: {0}"
                 }
             ]
         },

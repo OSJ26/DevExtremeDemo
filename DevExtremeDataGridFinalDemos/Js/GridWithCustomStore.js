@@ -33,7 +33,7 @@ $(() => {
         showBorders: true,
         showColumnLines: true,
         showRowLines: true,
-        rowAlternationEnabled: true,
+        //rowAlternationEnabled: true,
         height: 450,
         focusedRowEnabled: true,
         focusedRowIndex: 0,
@@ -95,7 +95,7 @@ $(() => {
         },
         paging: {
             pageSize: 5,
-            pageIndex:3
+            pageIndex: 3
         },
         repaintChangesOnly: true,
         selection: {
@@ -112,19 +112,25 @@ $(() => {
             console.log(e);
             $("#body").addClass("body");
         },
+
         onCellPrepared: (gridCell) => {
-            console.log(gridCell);
+            //console.log(gridCell);
             if (gridCell.rowType == "data" && gridCell.column.dataField == "price") {
-                gridCell.cellElement.css("background-color", gridCell.data.price >= 50 ? "green" : ""); 
+                gridCell.cellElement.css("background-color", gridCell.data.price >= 50 ? "green" : "");
             }
             if (gridCell.rowType == "group" && gridCell.columnIndex == 1) {
                 gridCell.cellElement.html(gridCell.data.key);
                 gridCell.cellElement.attr("title", "");
             }
         },
-        //onRowPrepared: (test) => {
-        //    console.log(test);
-        //},
+
+        onRowPrepared: (gridRow) => {
+            console.log(gridRow);
+            if (gridRow.rowType === "data") {
+                if (gridRow.data.stops == "-")
+                    gridRow.rowElement.css("background-color", "yellow");
+            }
+        },
         onContentReady: (e) => {
             console.log(e);
         },
