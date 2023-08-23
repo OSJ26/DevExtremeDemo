@@ -63,12 +63,25 @@ $(() => {
 
         headerFilter: {
             visible: true,
+            search: {
+                searchExpr: ['source', 'destination'],
+                enabled: true,
+                timeOut: 900
+            },
+        },
+        selection: {
+            mode: 'multiple',
+            allowSelectAll: true
         },
         groupPanel: {
             visible: true,
         },
+        grouping: {
+            autoExpandAll: false,
+            allowCollepsing: true
+        },
         loadPanel: {
-            enabled: false,
+            enabled: true,
             indicatorSrc: '../Other/loading.gif',
             text: 'Data Loading..'
         },
@@ -98,9 +111,7 @@ $(() => {
             pageIndex: 3
         },
         repaintChangesOnly: true,
-        selection: {
-            mode: 'single'
-        },
+
 
         keyboardNavigation: {
             editKeyOption: "startEdit",
@@ -118,14 +129,19 @@ $(() => {
             if (gridCell.rowType == "data" && gridCell.column.dataField == "price") {
                 gridCell.cellElement.css("background-color", gridCell.data.price >= 50 ? "green" : "");
             }
-            if (gridCell.rowType == "group" && gridCell.columnIndex == 1) {
-                gridCell.cellElement.html(gridCell.data.key);
-                gridCell.cellElement.attr("title", "");
-            }
+            //if (gridCell.rowType == "group") {
+            //    if (gridCell.columnIndex > 0) {
+            //        //gridCell.cellElement.html(gridCell.data.key);
+            //        gridCell.cellElement.attr("title", "");   
+            //    }
+            //}
         },
 
+        onEditorPreparing: (gridEditor) => {
+            console.log(gridEditor);
+        },
         onRowPrepared: (gridRow) => {
-            console.log(gridRow);
+            //console.log(gridRow);
             if (gridRow.rowType === "data") {
                 if (gridRow.data.stops == "-")
                     gridRow.rowElement.css("background-color", "yellow");
@@ -198,7 +214,11 @@ $(() => {
                     allowHiding: false,
                     caption: 'Source',
                     width: 200,
+                    //groupIndex: 0,
                     alignment: 'center',
+                    groupCellTemplate: function (element, options) {
+                        element.text(options.value + " Count:" + options.summaryItems[0].value);
+                    },
                     validationRules: [{ type: 'required' }],
                 },
                 {
@@ -206,13 +226,18 @@ $(() => {
                     allowHiding: false,
                     caption: 'Destination',
                     width: 200,
+                    //groupIndex: 0,
                     alignment: 'center',
+                    groupCellTemplate: function (element, options) {
+                        element.text(options.value + " Count:" + options.summaryItems[0].value);
+                    },
                     validationRules: [{ type: 'required' }],
                 }]
             },
             {
                 dataField: 'price',
                 caption: 'Amount',
+                //groupIndex: 0,
                 alignment: 'center',
                 validationRules: [{ type: 'required' }],
             },
@@ -291,6 +316,10 @@ $(() => {
                     }
                 },
                 'columnChooserButton',
+                "searchPanel",
+                {
+
+                }
                 //{
                 //    location: 'before',
                 //    widget: 'dxSelectBox',
@@ -332,7 +361,15 @@ $(() => {
                     displayFormat: 'Total Bus : {0}',
                 },
             ],
+            groupItems: [
+                {
+                    column: "source",
+                    summaryType: 'count'
+                }, {
+                    column: "destination",
+                    summaryType: 'count'
+                }
+            ]
         }
     }).dxDataGrid('instance');
-
 });

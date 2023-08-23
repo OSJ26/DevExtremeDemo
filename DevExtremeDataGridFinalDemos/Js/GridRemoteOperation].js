@@ -15,10 +15,17 @@ $(() => {
         //    showInfo: true,
         //    showPageSizeSelector: true,
         //},
-        //paging: {
-        //    pageSize: 10,
-        //    pageIndex:4,
-        //},
+        paging: {
+            pageSize: 10,
+            pageIndex:4,
+        },
+        searchPanel: {
+            visible: true,
+            placeholder: 'Search Here',
+            highlightSearchText: true,
+            highlightCaseSensitive: false,
+            width: 200
+        },
         filterPanel: {
             visible: true
         },

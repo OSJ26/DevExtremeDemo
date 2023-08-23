@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Popup</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- DevExtreme theme -->
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/22.1.10/css/dx.light.css">
+
+    <!-- DevExtreme library -->
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/22.1.10/js/dx.all.js"></script>
+
+    <script src="../Data/employeeData.js"></script>
+
+    <style>
+        .menu {
+            font-size:12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 4px;
+        }
+        #container {
+            height: 90vh;
+            width: 100%;
+            display: flex;
+        }
+        #menu {
+            border: 1px solid rgba(0, 0, 0, 0);
+            background-color: rgba(0, 148, 255,0.1) ;
+            border-radius:6px;
+            height: inherit;
+            width: 20%;
+        }
+        #popupContent {
+            height: 90vh;
+            border-radius: 6px;
+            margin: 0 0 0 4px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="menu"></div>
+        <div id="popupContent"></div>
+        <div id="loadPanel"></div>
+    </div>
+
+    <script src="../Js/03-Navigation.js"></script>
+    <script src="../Data/03-Navigation.js"></script>
+</body>
+</html>

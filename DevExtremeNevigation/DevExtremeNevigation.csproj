@@ -110,14 +110,21 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Data\01-data.js" />
     <Content Include="Data\02-Data.js" />
+    <Content Include="Data\03-Navigation.js" />
+    <Content Include="Data\DataSourcePreparing.js" />
     <Content Include="Data\employeeData.js" />
     <Content Include="img\19.png" />
     <Content Include="img\21.png" />
+    <Content Include="img\ledger.png" />
+    <Content Include="img\master.png" />
     <Content Include="img\monitor.png" />
     <Content Include="img\projector.png" />
+    <Content Include="img\report.png" />
+    <Content Include="img\tax.png" />
     <Content Include="img\television.png" />
     <Content Include="Js\01-SimpleNavigation.js" />
     <Content Include="Js\02-SimpleTreeView.js" />
+    <Content Include="Js\03-Navigation.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
@@ -183,6 +190,7 @@
     <Content Include="img\video.png" />
     <Content Include="View\01-SimpleNavigation.html" />
     <Content Include="View\02-SimpleTreeView.html" />
+    <Content Include="View\03-Navigation.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

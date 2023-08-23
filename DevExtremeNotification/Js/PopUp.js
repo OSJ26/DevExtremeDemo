@@ -185,7 +185,7 @@
                     onClick(e) {
                         const flag = e.validationGroup.validate().isValid;
                         if (flag) {
-                            popup.option("showCloseButton",true);
+                            popup.option("showCloseButton", true);
                             DevExpress.ui.notify("Popup closed", "success", 1000);
                         }
                         else {
@@ -193,10 +193,27 @@
                         }
                     }
                 }
+            },
+            {
+                itemType: 'button',
+                horizontalAlignment: "center",
+                buttonOptions: {
+                    text: 'Popup',
+                    type: 'success',
+                    useSubmitBehavior: true,
+                    onClick(e) {
+                        $("#popup2").dxPopup("instance").show();  
+                    }
+                }
             }]
         })
 
     };
+
+    $("#popup2").dxPopup({
+        showTitle: true,
+        title: 'Popup 2 title'
+    }); 
 
     const popup = $('#popup').dxPopup({
         contentTemplate: popUpTemplate,

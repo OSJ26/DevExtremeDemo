@@ -1,12 +1,14 @@
 ﻿$(() => {
     $("#treeView").dxTreeView({
-        items: products,
+        //items: products,
+        dataSource: data,
         width: 300,
         collapseIcon: 'collapse',
         expandIcon: 'expand',
         hint: 'Products',
         disabledExpr: 'val',
-        //scrollDirection: 'both',
+        keyExpr: 'menuId',
+        displayExpr:"menuName",
         searchEnabled: true,
         //searchValue:'Video Players',
         searchMode: 'contains',
@@ -14,7 +16,7 @@
         selectNodesRecursive: false,     
         showCheckBoxesMode: 'selectAll',
         selectAllText: 'Check All',
-        virtualModeEnabled: true,
+        virtualModeEnabled: false,
         expandNodesRecursive: true,
         elementAttr: {
             class: 'customize'
